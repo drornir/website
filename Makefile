@@ -1,6 +1,7 @@
 
 # Image URL to use all building/pushing image targets
 IMG ?= website:latest
+DIR ?= dndev
 
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
 ifeq (,$(shell go env GOBIN))
@@ -38,7 +39,7 @@ help: ## Display this help.
 
 .PHONY: run
 run: build ## build and run local
-	@echo todo
+	hugo server --source=$(DIR)
 
 ##@ Build
 
@@ -49,3 +50,12 @@ build:  ## Build
 ##@ Deployment
 
 ##@ Build Dependencies
+
+.PHONY: update-theme
+update-theme: ## Git pulls from the theme dir
+	git submodule update --remote --merge
+
+.PHONY: install-theme
+install-theme: ## Clones the theme
+	git submodule add --depth=1 -- https://github.com/adityatelange/hugo-PaperMod $(DIR)/themes/PaperMod
+	git submodule update --init --recursive
