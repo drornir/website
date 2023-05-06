@@ -38,14 +38,14 @@ help: ## Display this help.
 ##@ Development
 
 .PHONY: run
-run: build ## build and run local
+run: ## run local hugo dev server
 	hugo server --source=$(DIR)
 
 ##@ Build
 
 .PHONY: build
 build:  ## Build
-	@echo todo
+	@echo todo build cmd
 
 ##@ Deployment
 
