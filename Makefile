@@ -42,7 +42,7 @@ help: ## Display this help.
 
 .PHONY: run
 run: ## run local hugo server.
-	hugo server --source=$(DIR)
+	HUGO_ENV=production hugo server --source=$(DIR)
 
 ##@ Build
 
@@ -59,7 +59,7 @@ dev: ## run local hugo server with drafts.
 NAME ?= untitled-$(RANDOM)
 .PHONY: new-post
 new-post: ## create new draft post.
-	hugo new "posts/$(NEW_NAME).md" --source=$(DIR)
+	hugo new "posts/$(NAME).md" --source=$(DIR)
 
 ##@ Build Dependencies
 

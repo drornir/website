@@ -1,4 +1,21 @@
 baseURL: 'https://drornir.dev/'
 languageCode: 'en-us'
-title: 'Dror Nir'
+title: 'drornir.dev'
 theme: PaperMod
+
+params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
+
+  defaultTheme: dark
+  disableThemeToggle: true
+
+  profileMode:
+    enabled: true
+    imageUrl: ./profile.png
+    title: I'm dror
+    subtitle: This is my website, and it has nothing in it 🚀
+
+  socialIcons:
+    - name: github
+      url: https://github.com/drornir
+    - name: email
+      url: mailto:dror.nir0@gmail.com
