@@ -1,6 +1,7 @@
 
 # Image URL to use all building/pushing image targets
 IMG ?= website:latest
+# Root dir of the hugo project
 DIR ?= dndev
 
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
@@ -14,6 +15,8 @@ endif
 # Options are set to exit when a recipe line exits non-zero or a piped command fails.
 SHELL = /usr/bin/env bash -o pipefail
 .SHELLFLAGS = -ec
+
+RANDOM=$(shell date +%s | shasum --algorithm 256 - | head -c 4)
 
 .PHONY: all
 all: build
@@ -38,16 +41,25 @@ help: ## Display this help.
 ##@ Development
 
 .PHONY: run
-run: ## run local hugo dev server
+run: ## run local hugo server.
 	hugo server --source=$(DIR)
 
 ##@ Build
 
 .PHONY: build
-build:  ## Build
+build:  ## TODO.
 	@echo todo build cmd
 
 ##@ Deployment
+
+.PHONY: dev
+dev: ## run local hugo server with drafts.
+	hugo server --source=$(DIR) --buildDrafts
+
+NAME ?= untitled-$(RANDOM)
+.PHONY: new-post
+new-post: ## create new draft post.
+	hugo new "posts/$(NEW_NAME).md" --source=$(DIR)
 
 ##@ Build Dependencies
 
