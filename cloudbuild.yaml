@@ -16,7 +16,7 @@ steps:
       - path: /go/bin
         name: gobin
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
-    args: [ 'gsutil', 'rsync ','-r',
+    args: [ 'gsutil', 'rsync', '-r',
             '/workspace/dndev/public',
             'gs://drornir.dev' ]
 options:
