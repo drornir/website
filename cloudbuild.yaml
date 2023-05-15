@@ -7,8 +7,6 @@ steps:
       - path: /go/bin
         name: gobin
   - name: gcr.io/cloud-builders/go:1.20
-    env:
-      - 'GOPATH=/go'
     script: |
       #!/bin/sh
       set -e
@@ -17,9 +15,11 @@ steps:
     volumes:
       - path: /go/bin
         name: gobin
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
     args: [ 'gsutil', 'rsync ','-r',
             '/workspace/dndev/public',
             'gs://drornir.dev' ]
 options:
   logging: CLOUD_LOGGING_ONLY
+  env:
+    - 'GOPATH=/go'
