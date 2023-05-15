@@ -19,3 +19,5 @@ steps:
     args: [ 'gsutil', 'rsync ','-r',
             '/workspace/dndev/public',
             'gs://drornir.dev' ]
+options:
+  logging: CLOUD_LOGGING_ONLY
