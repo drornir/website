@@ -8,8 +8,8 @@ steps:
       echo "go install"
       go install github.com/gohugoio/hugo@v0.111.3
       
-      echo "hugo config in $(pwd)"
-      cat config.yaml
+      ls themes/PaperMod -al
+      
       /go/bin/hugo
       ls "$(pwd)/public" -a1
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
