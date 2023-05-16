@@ -21,6 +21,8 @@ params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
       url: mailto:dror.nir0@gmail.com
     - name: twitter
       url: https://twitter.com/drornir
+    - name: linkedin
+      url: https://www.linkedin.com/in/dror-nir-5b49a159/
 
 #deployment:
 #  targets:
