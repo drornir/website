@@ -12,7 +12,7 @@ params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
     enabled: true
     imageUrl: ./profile.png
     title: I'm dror
-    subtitle: This is my website, and it has nothing in it 🚀
+    subtitle: Go Developer, making Dev Platforms with DevOps practices 🐳
 
   socialIcons:
     - name: github
@@ -20,19 +20,19 @@ params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
     - name: email
       url: mailto:dror.nir0@gmail.com
 
-deployment:
-  targets:
-    - name: gcs
-      URL: gs://drornir.dev
-  matchers:
-    - pattern: ^.+\.(js|css|svg|ttf)$
-      cacheControl: max-age=31536000, no-transform, public
-      gzip: true
-    - pattern: ^.+\.(png|jpg)$
-      cacheControl: max-age=31536000, no-transform, public
-      gzip: false
-    - pattern: ^sitemap\.xml$
-      contentType: application/xml
-      gzip: true
-    - pattern: ^.+\.(html|xml|json)$
-      gzip: true
+#deployment:
+#  targets:
+#    - name: gcs
+#      URL: gs://drornir.dev
+#  matchers:
+#    - pattern: ^.+\.(js|css|svg|ttf)$
+#      cacheControl: max-age=31536000, no-transform, public
+#      gzip: true
+#    - pattern: ^.+\.(png|jpg)$
+#      cacheControl: max-age=31536000, no-transform, public
+#      gzip: false
+#    - pattern: ^sitemap\.xml$
+#      contentType: application/xml
+#      gzip: true
+#    - pattern: ^.+\.(html|xml|json)$
+#      gzip: true
