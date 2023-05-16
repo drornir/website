@@ -10,10 +10,9 @@ steps:
       echo "go install"
       go install github.com/gohugoio/hugo@v0.111.3
       
-      ls themes/PaperMod -al
-      
       /go/bin/hugo
-      ls "$(pwd)/public" -a1
+      echo 'ls "$(pwd)/public"'
+      ls "$(pwd)/public"
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
     args: [ 'gsutil', '-m', 'rsync', '-r',
             '/workspace/dndev/public',
