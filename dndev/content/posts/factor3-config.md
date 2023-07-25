@@ -1,9 +1,7 @@
 ---
 title: "Factor 3 - Declare a Config"
-date: 2023-07-23T21:00:00+03:00
+date: "2023-07-24T21:00:00+03:00"
 draft: true
-author: Dror nir
-avatar: /profile.png
 tags:
   - Go
   - Config
@@ -190,3 +188,4 @@ data:
   config.yaml: |
     my: yaml
 ```
+

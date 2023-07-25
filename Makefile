@@ -69,5 +69,5 @@ update-theme: ## Git pulls from the theme dir
 
 .PHONY: install-theme
 install-theme: ## Clones the theme
-	git submodule add --depth=1 -- https://github.com/adityatelange/hugo-PaperMod $(DIR)/themes/PaperMod
+	# git submodule add --depth=1 -- https://github.com/adityatelange/hugo-PaperMod $(DIR)/themes/PaperMod
 	git submodule update --init --recursive
