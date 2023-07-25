@@ -1,5 +1,5 @@
 ---
-title: "Factor 3 - Declarative Config for Golang"
+title: "A Declarative Config for Golang"
 date: "2023-07-24T21:00:00+03:00"
 
 tags:
@@ -25,7 +25,8 @@ sleeves and write it. Let me know on [my socials](/) if I convinced you or not ð
 At the core of it, I want to make it faster for me to configure the apps I write.
 Specifically, I want to make it easier for me to extract "consts" into configuration.
 "**Configuration**" is not an easy problem, and the [12 Factor App](https://12factor.net)
-Has a chapter on it. It's chapter 3, so I'm calling this idea `factor3`. Cool, huh?
+Has a [chapter](https://12factor.net/config) on it. You should really check it out.
+
 I'll give you the tl;dr of what is written there: "just do it in env vars".
 I agree. Making everything configurable by an env var IS THE WAY TO GO. It
 ensures your configuration is fine grained, easy to (de)serialize, language-agnostic
@@ -44,12 +45,12 @@ of this everywhere. Some notable examples of system that assume this are:
 
 ---
 
-So what does `factor3` should feel like?
+So how should our `lib` should feel like?
 
 Here's some tangible example:
 
 ```go 
-//go:generate factor3 [...]
+//go:generate lib-cli [...]
 type Config struct {
   Github struct {
     Username string
@@ -88,7 +89,7 @@ As a young junior dev, my boss told me one of the best advices I got:
 > "If it's not in a doc, it doesn't exist" - Eddy K
 
 The first and maybe the most important feature is documentation of what are
-the parameters you can pass to this program. So I want factor3 to print out 
+the parameters you can pass to this program. So I want this lib to print out 
 the schema of the parameters you can pass. It's useful for `--help`,
 for embedding that in your `README.md`, in the "Getting Started"
 part of your docs... Literally everywhere. Evidently, it's what we 
