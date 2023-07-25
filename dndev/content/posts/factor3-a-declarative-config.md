@@ -1,7 +1,7 @@
 ---
 title: "Factor 3 - Declarative Config for Golang"
 date: "2023-07-24T21:00:00+03:00"
-draft: true
+
 tags:
   - Go
   - Config
@@ -11,7 +11,7 @@ tags:
   - Twelve Factor App
 ---
 
-## A Declarative Configuration lib in Go
+## A Declarative Configuration lib for Go
 
 I'm thinking about building a Go package (and CLI) to let me just declare a _schema of a config_,
 and use code generation on top of that to declare how I want to Marshal and Unmarshal it
@@ -310,7 +310,7 @@ As I said, I think it does, but what do you think?
 
 Also, am I missing some awesome existing library that already does all of this?
 
-[My homepage has my socials](/).
+[My homepage has my socials](/) 😘
 
 Appreciate any feedback 🙏
 
