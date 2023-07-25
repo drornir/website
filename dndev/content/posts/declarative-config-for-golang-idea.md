@@ -311,8 +311,6 @@ As I said, I think it does, but what do you think?
 
 Also, am I missing some awesome existing library that already does all of this?
 
-Appreciate any feedback 🙏
-
-On [this tweet](https://twitter.com/drornir/status/1683924287693152258) (or 𝕏 or whatever)
-Or DM me somewhere. [My homepage has my socials](/) 😘
+Appreciate any feedback on [this tweet](https://twitter.com/drornir/status/1683924287693152258) 
+(or 𝕏 or whatever) or [DM me somewhere](/) 🙏 😘
 
