@@ -1,6 +1,6 @@
 ---
 title: "A Declarative Config for Golang"
-date: "2023-07-24T21:00:00+03:00"
+date: "2023-07-25T20:00:00+03:00"
 
 tags:
   - Go
