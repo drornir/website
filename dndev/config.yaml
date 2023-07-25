@@ -6,13 +6,23 @@ theme: PaperMod
 params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
 
   defaultTheme: dark
-  disableThemeToggle: true
+  disableThemeToggle: false
+  ShowShareButtons: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowReadingTime: true
+  ShowToc: true
+
+  author: Dror Nir
 
   profileMode:
     enabled: true
     imageUrl: ./profile.png
     title: I'm dror
     subtitle: Go Developer, making Dev Platforms with DevOps practices 🐳
+    buttons:
+      - name: Blog
+        url: /posts
 
   socialIcons:
     - name: github
