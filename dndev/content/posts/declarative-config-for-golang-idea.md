@@ -25,7 +25,7 @@ sleeves and write it. Let me know on [my socials](/) if I convinced you or not ð
 At the core of it, I want to make it faster for me to configure the apps I write.
 Specifically, I want to make it easier for me to extract "consts" into configuration.
 "**Configuration**" is not an easy problem, and the [12 Factor App](https://12factor.net)
-Has a [chapter](https://12factor.net/config) on it. You should really check it out.
+has a [chapter](https://12factor.net/config) on it. You should really check it out.
 
 I'll give you the tl;dr of what is written there: "just do it in env vars".
 I agree. Making everything configurable by an env var IS THE WAY TO GO. It
