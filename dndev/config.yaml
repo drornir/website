@@ -18,11 +18,15 @@ params: # https://github.com/adityatelange/hugo-PaperMod/wiki/Features
   profileMode:
     enabled: true
     imageUrl: ./profile.png
-    title: I'm dror
-    subtitle: Go Developer, making Dev Platforms with DevOps practices 🐳
+    title: I'm Dror
+    subtitle: This is where I nerd out about software and the people who make it
     buttons:
       - name: Blog
         url: /posts
+      - name: About
+        url: /about
+      - name: Archive
+        url: /archives
 
   socialIcons:
     - name: github
