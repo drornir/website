@@ -1,7 +1,12 @@
 ---
 title: Why Code Generation?
 date: 2023-07-31T20:55:00+03:00
+cover: 
+ image: /covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg
 ---
+
+Photo by <a href="https://unsplash.com/@inakihxz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Iñaki del Olmo</a> on <a href="https://unsplash.com/photos/Trn2-DwoEr0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 
 ## Code Generation is a form Metaprogramming
 
