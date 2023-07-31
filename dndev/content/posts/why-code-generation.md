@@ -2,7 +2,7 @@
 title: Why Code Generation?
 date: 2023-07-31T20:55:00+03:00
 cover: 
- 	image: /covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg
+  image: /covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg
 tags:
  - Code Generation
  - Metaprogramming
