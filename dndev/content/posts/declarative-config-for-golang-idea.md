@@ -68,7 +68,7 @@ func PrintSchema(c Config) {
 }
 
 func LoadFromEnv() (Config, error) {
-  envUnmarshaler := c.F3().Env().DefaultUnmarshaler
+  envUnmarshaler := Config{}.F3().Env().DefaultUnmarshaler
 
   var c Config
   if err := envUnmarshaler(&c); err != nil {
