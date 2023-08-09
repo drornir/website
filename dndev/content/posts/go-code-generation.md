@@ -1,7 +1,7 @@
 ---
+draft: true
 title: "Code Generation in Go"
 date: 2023-07-28T21:00:00+03:00
-draft: true
 tags:
   - Go
   - Code Generation
