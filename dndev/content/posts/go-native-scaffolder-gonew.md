@@ -2,7 +2,7 @@
 date: 2023-07-31T23:00:00+03:00
 title: "`gonew` - the official Golang scaffolder is in alpha"
 cover: 
-  image: /covers/awkward_gopher.jpg
+  image: covers/awkward_gopher.jpg
 
 tags:
   - Go

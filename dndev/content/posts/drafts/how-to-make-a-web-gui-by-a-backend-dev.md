@@ -12,7 +12,7 @@ and interact it like a normal human.
 
 Why did this happen? It's just that they don't really want or have the time to
 start learning React, Redux and NextJS. 
-They only kind of maybe have some basic knowledge about javascript. And when they
+They only kind of, maybe, have some basic knowledge about javascript. And when they
 read online, you get one of two approaches:
 
 - Learn plain html/css/js and do string templating
@@ -21,8 +21,7 @@ read online, you get one of two approaches:
 Both options are overwhelming.
 
 But there are many small, obscure libraries and mini-frameworks that were
-built with **you** in mind - yes, you, a backend developer who just wants to
-interact with their users easily.
+built with a backend developer who just wants to interact with humans easily.
 
 I'll try to sketch out a few ideas for you to get started with. You can mix and
 match between the example, since n the base of them all is a shared set of assumptions:
@@ -49,7 +48,7 @@ It's not supposed to be easy to do so, just possible.
 
 ## Options
 
-### My ACTUAL suggestions: Wordpress / NextJS / Ruby on Rails...
+### My ACTUAL suggestion: Wordpress / NextJS / Ruby on Rails...
 
 Just use a framework, honestly. This article is more about getting into 
 doing it yourself and learning from this process. If you really just need a 
@@ -58,9 +57,15 @@ on a good UI framework if you need to.
 
 But, for tinkering with cool new tech, let's go over other options.
 
-### Hugo (Go + html + vanilla)
+### HTMX
 
-> Very Basic
+
+
+
+
+
+
+### Hugo (Go + html + vanilla)
 
 #### backend 
 
@@ -118,4 +123,3 @@ big of a problem. If you need more than basic reactivity, there are other option
 ### 
 
 
-I DUNNO MAN IS THIS GOOD?
