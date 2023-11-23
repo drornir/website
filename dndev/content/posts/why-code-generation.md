@@ -65,7 +65,7 @@ Since then, I avoid reflection at runtime, if possible.
 
 Domain Specific Language (DSL) means, plainly, that you write a new programming language
 that is very good for a small set of problems. You could say that every programming
-language is a form of DSL, and you would be technically write. Every language that is so
+language is a form of DSL, and you would be technically right. Every language that is so
 called "general purpose" was created to with the goal of writing programs in a specific way.
 
 However, when we say DSL, we usually mean that you write some custom made, very very 
