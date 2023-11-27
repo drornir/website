@@ -14,7 +14,7 @@ Photo by [Iñaki del Olmo](https://unsplash.com/@inakihxz?utm_source=unsplash&ut
 on [Unsplash](https://unsplash.com/photos/Trn2-DwoEr0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 
-## Code Generation is a form Metaprogramming
+## Code Generation is a form of Metaprogramming
 
 From the early days of the C programming language, to today's cutting edge
 languages, some sort of meta programming technique is used.
