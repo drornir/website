@@ -1,6 +1,6 @@
 ---
 title: "I Don't Get Why You Would Use WASM outside of a Browser"
-date: "2023-12-04T20:00:00+03:00"
+date: "2024-01-04T20:00:00+03:00"
 cover:
   image: covers/audio-plugins.jpg
 
