@@ -1,11 +1,20 @@
 ---
 title: "I Don't Get Why You Would Use WASM outside of a Browser"
 date: "2023-12-04T20:00:00+03:00"
+cover:
+  image: covers/audio-plugins.jpg
 
 tags:
   - Rant
   - WASM
   - WASI
+---
+
+> Photo by
+> [Techivation](https://unsplash.com/@techivation?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+> on
+> [Unsplash](https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-3KO5_x6FfJM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
 ---
 
 I don't get why people want to use WASM if they don't plan to run it
@@ -20,13 +29,13 @@ for tools.
 Historically, if you wanted to create a pluggable system, you would
 choose a high level language. For example, neovim
 uses [lua](https://www.lua.org/) for making neovim do things it doesn't
-have baked in. Things like syntax highlighting, 
+have baked in. Things like syntax highlighting,
 [lsp](https://microsoft.github.io/language-server-protocol/) integration,
 and keybinding configuration are all set using lua. You write you own
 scripts and use existing plugins you find online or even buy.
 
 Another important example is Javascript, which is, at least historically,
-a scripting language meant to add interactivity to HTML pages. It's a 
+a scripting language meant to add interactivity to HTML pages. It's a
 high level programming language that allows you to write plugins, in the context
 of running it by another specific program (the browser in our case).
 
@@ -34,7 +43,7 @@ of running it by another specific program (the browser in our case).
 
 Javascript is the reason that WASM was invented. People did and are doing
 incredible things with JS and this created the rich and powerful ecosystem
-around. Just looking at the size of Typescript, Webpack, JSX and similar 
+around. Just looking at the size of Typescript, Webpack, JSX and similar
 popular tools means a lot of people want more that what JS has to offer on
 its own.
 
@@ -42,7 +51,7 @@ With the rise of these toolchains that generate javascript as output,
 one has to wonder wht bother compiling our code to a high level, dynamically
 typed language? The answer to that question is WASM!
 
-WASM is a way for people who want to develop in practically any language they 
+WASM is a way for people who want to develop in practically any language they
 choose (given a wasm compiler, of course), and run that in the browser.
 You can bring your own toolchain, own implementation of data structures and
 all the benefits of your programming language shipped to the browser.
@@ -52,9 +61,9 @@ all the benefits of your programming language shipped to the browser.
 
 ## But WASM is a weird scripting language
 
-But for _some reason_ people are taking this new, low level language 
-specification and adding support for system calls. It's called 
-[WASI](https://wasi.dev/) (short for "WebAssembly System Interface"), 
+But for _some reason_ people are taking this new, low level language
+specification and adding support for system calls. It's called
+[WASI](https://wasi.dev/) (short for "WebAssembly System Interface"),
 and it is used for running WASM code inside a process on an operating system.
 
 But something doesn't add up to me.
@@ -72,9 +81,9 @@ as well.
 
 ## Don't use WASI unless you are super successful
 
-My bottom line is that most plugins don't need the complexity and drawbacks 
+My bottom line is that most plugins don't need the complexity and drawbacks
 that come with using WASM. The only case that justifies this is the browser,
-as it is the de-facto operating system for any GUI application. Running a 
+as it is the de-facto operating system for any GUI application. Running a
 game engine inside a browser makes sense, and is possible with WASM.
 But inside an IDE? A cli tool? not as much.
 
