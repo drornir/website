@@ -19,7 +19,7 @@ SHELL = /usr/bin/env bash -o pipefail
 RANDOM=$(shell date +%s | shasum --algorithm 256 - | head -c 4)
 
 .PHONY: all
-all: build
+all: help
 
 ##@ General
 
