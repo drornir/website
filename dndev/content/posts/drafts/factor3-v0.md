@@ -11,6 +11,11 @@ tags:
   - Factor3
 ---
 
+Photo by [Peter Herrmann](https://unsplash.com/@tama66?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+on [Unsplash](https://unsplash.com/photos/grayscale-photo-of-metal-pipe-IukQrXhSvPY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
+---
+
 I wrote a small toy for loading configuration easily from multiple sources.
 
 I wanted a 100% opinionated library that let me define a Go struct with the
@@ -76,14 +81,15 @@ func main() {
 Above is the code for a minimal app that only accepts a port as a string.
 
 Note a few relevant lines:
+
 - `//go:generate factor3 generate` needs to be somewhere once in each package.
-- `//factor3:generate --filename config.yaml --env-prefix MY_APP` signals to 
-    `factor3` that you want to generate code for this type.
-    the flags like `--filename` are a way to pass configuration to factor3
-    that is applicable only for this specific type
+- `//factor3:generate --filename config.yaml --env-prefix MY_APP` signals to
+  `factor3` that you want to generate code for this type.
+  the flags like `--filename` are a way to pass configuration to factor3
+  that is applicable only for this specific type
 - `//factor3:pflag port` - flags support is opt-in. Most apps don't really
-    need a commandline flag for all the options. Annotating a struct field 
-    with `pflag <name> [short]` will add and bind a flag using `spf13/pflag`.
+  need a commandline flag for all the options. Annotating a struct field
+  with `pflag <name> [short]` will add and bind a flag using `spf13/pflag`.
 
 Our example expects a yaml file to be at the path `config.yaml` relative
 to root of the project. In this example, we have a small yaml:
