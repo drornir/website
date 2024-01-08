@@ -15,7 +15,7 @@ endif
 ifndef CF_PAGES_URL
 	baseURL="http://localhost:1313"
 else
-	ifeq (${CF_PAGES_BRANCH}, "main")
+	ifeq (${CF_PAGES_BRANCH}, main)
 			baseURL="https://drornir.dev"
 		else
 			baseURL=${CF_PAGES_URL} 
