@@ -12,7 +12,7 @@ GOBIN=$(shell go env GOBIN)
 endif
 
 # Set baseURL to CF_PAGES_URL if it's not main
-ifndef ${CF_PAGES_URL} 
+ifndef CF_PAGES_URL
 	baseURL="http://localhost:1313"
 else
 	ifeq (${CF_PAGES_BRANCH}, "main")
