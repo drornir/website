@@ -17,8 +17,8 @@ on [Unsplash](https://unsplash.com/photos/grayscale-photo-of-metal-pipe-IukQrXhS
 
 I wrote a small toy for loading configuration easily from multiple sources.
 
-I was thinking a lot about it, even wrote a
-[post](/posts/declarative-config-for-golang-idea) about it.
+I was thinking a lot about it, even wrote a whole
+[post](/posts/declarative-config-for-golang-idea).
 
 ## The Problem
 
@@ -27,20 +27,21 @@ expected values and let it generate code that loads configuration from multiple
 sources, simultaneously:
 
 1. The default configuration will be defined in a yaml file
-2. The values in the config file can be overridden by environment variables.
-3. And those environment variables can be overridden by passing flags in the
+2. The values in the config file can be overridden by environment variables,
+3. and those environment variables can be overridden by passing flags in the
    commandline.
 
 The idea was to make a declarative API that takes care of the repetitive
 boilerplate around defining a configuration API to a CLI app.
 
-It's supposed to conform to the 12 Factor App Config section, without needing
+It's supposed to conform to the 12 Factor App 
+[Config section](https://12factor.net/config), without needing
 the user to worry about it too much.
 
 I constrained myself to using code generation for two distinct reasons:
 
 - Code generation is metaprogramming done right
-  [in my opinion](/posts/why-code-generation), and this required some metaprogramming.
+  [in my opinion](/posts/why-code-generation), and this required some metaprogramming
 - I wanted to dive deeper into parsing code and code generation in general
 
 So I started my new side project.
