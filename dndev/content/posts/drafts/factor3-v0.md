@@ -1,6 +1,6 @@
 ---
 draft: true
-title: "Factor3 (v0) - a code gen for configuring a Go app"
+title: "Factor3 (v0) - a code gen for configuring your Go app"
 date: "2024-01-08T15:00:00+02:00"
 cover:
   image: covers/peter-herrmann-IukQrXhSvPY-unsplash.jpg
