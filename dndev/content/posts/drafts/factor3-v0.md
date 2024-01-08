@@ -16,32 +16,37 @@ on [Unsplash](https://unsplash.com/photos/grayscale-photo-of-metal-pipe-IukQrXhS
 
 ---
 
-
 I wrote a small toy for loading configuration easily from multiple sources.
 
-I wanted a 100% opinionated library that let me define a Go struct with the
+I was thinking a lot about it, even wrote a
+[post](/posts/declarative-config-for-golang-idea) about it.
+
+## The Problem
+
+I wanted a 100% opinionated library that would let me define a Go struct with the
 expected values and let it generate code that loads configuration from multiple
-sources.
+sources, simultaneously:
 
-The default configuration will be defined in a yaml file
-
-The values in the config file can be overridden by environment variables.
-
-And those environment variables can be overridden by passing flags in the
-commandline.
+1. The default configuration will be defined in a yaml file
+2. The values in the config file can be overridden by environment variables.
+3. And those environment variables can be overridden by passing flags in the
+   commandline.
 
 The idea was to make a declarative API that takes care of the repetitive
 boilerplate around defining a configuration API to a CLI app.
 
-It's supposed to conform to the 12 Factor App Config section, without needing to
-worry about it.
+It's supposed to conform to the 12 Factor App Config section, without needing
+the user to worry about it too much.
 
-It was important to me to use code generation for two distinct reasons:
+I constrained myself to using code generation for two distinct reasons:
 
-- Code generation is metaprogramming done right, [in my opinion](/posts/why-code-generation)
+- Code generation is metaprogramming done right
+  [in my opinion](/posts/why-code-generation), and this required some metaprogramming.
 - I wanted to dive deeper into parsing code and code generation in general
 
 So I started my new side project.
+
+![Awkward Gopher](/covers/awkward_gopher.jpg)
 
 ## Introducing [drornir/factor3](https://github.com/drornir/factor3) v0.1.0
 
@@ -50,7 +55,14 @@ This is me saying that it is bad in its current state and I wouldn't recommend
 using it. It doesn't have enough features yet, and is generally poorly designed
 for extensibility.
 
-The readme shows a basic usage, but I'll try to briefly go over it here:
+_but_...
+
+It still works!
+
+---
+
+[The readme](https://github.com/drornir/factor3) shows a basic usage, 
+but I'll try to briefly go over it here:
 
 ```go
 package main
@@ -108,5 +120,16 @@ to parse the file, env and flags and bind them to this `c`.
 
 > if you don't use flags you can pass `nil` to `Factor3Load`.
 
+## Bottom Line,
+
 It works, so I'm releasing it as it is and will continue to add features.
-My next feature is to support nested structs.
+My next TODO item is to support nested structs:
+
+```go
+type Config struct {
+  DB struct {
+    User string
+    Password string
+  }
+}
+```
