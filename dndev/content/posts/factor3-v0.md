@@ -20,6 +20,8 @@ I wrote a small toy for loading configuration easily from multiple sources.
 I was thinking a lot about it, even wrote a whole
 [post](/posts/declarative-config-for-golang-idea).
 
+[Here's a link to it](https://github.com/drornir/factor3)
+
 ## The Problem
 
 I wanted a 100% opinionated library that would let me define a Go struct with the
@@ -48,7 +50,7 @@ So I started my new side project.
 
 ![Awkward Gopher](/covers/awkward_gopher.jpg)
 
-## Introducing [drornir/factor3](https://github.com/drornir/factor3) v0.1.0
+## Introducing [drornir/factor3](https://github.com/drornir/factor3/tree/v0.1.1) v0.1
 
 I'm starting out small and slowly building features.
 This is me saying that it is bad in its current state and I wouldn't recommend
@@ -61,7 +63,7 @@ It still works!
 
 ---
 
-[The readme](https://github.com/drornir/factor3) shows a basic usage, 
+[The readme](https://github.com/drornir/factor3/blob/v0.1.1/README.md) shows a basic usage, 
 but I'll try to briefly go over it here:
 
 ```go
