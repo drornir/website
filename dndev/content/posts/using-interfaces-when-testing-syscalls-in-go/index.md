@@ -1,6 +1,6 @@
 ---
 title: "How to test Go functions that make syscalls?"
-date: "2024-02-14T20:00:00+02:00"
+date: "2024-02-27T21:00:00+02:00"
 cover:
   image: covers/golang-renee.png 
 
