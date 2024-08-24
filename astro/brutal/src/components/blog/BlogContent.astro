@@ -1,17 +1,24 @@
 ---
 interface Props {
-  content: any;
+  content: {
+    author: string
+    pubDate: string
+  }
 }
 
 const { content } = Astro.props;
+const author = content.author || 'Dror';
+const as_rfc = new Date(content.pubDate).toISOString();
+const date = as_rfc.split('T')[0];
+const time = as_rfc.split('T')[1].split('.')[0].split(':').slice(0, 2).join(':');
+const tz = as_rfc.endsWith('Z') ? '' : as_rfc.slice(-6);
 ---
-
 <article class='prose-slate w-sm md:w-prose md:prose poppins'>
   <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
   <p class='text-slate text-sm md:text-base'>
-    Published on {content.pubDate} by {content.author}
+    {date} {time} UTC{tz} by {author}
   </p>
   <slot />
-  <p class='text-slate'>Written by {content.author}</p>
+  <p class='text-slate'>Written by {author}</p>
   <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
 </article>
