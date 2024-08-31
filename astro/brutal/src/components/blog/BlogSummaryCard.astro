@@ -7,8 +7,9 @@ import { Button } from "@eliancodes/brutal-ui";
 interface Props {
   post: CollectionEntry<"blog">;
 }
-
 const { post } = Astro.props;
+const as_rfc = new Date(post.data.pubDate).toISOString();
+const date = as_rfc.split("T")[0];
 ---
 
 <SummaryCard
@@ -17,7 +18,9 @@ const { post } = Astro.props;
   imgSrc={post.data.imgUrl}
   description={post.data.description}
 >
-  <div class="flex justify-end my-4">
+
+  <div class="flex justify-between my-4">
+    <p class="sanchez self-center">{date}</p>
     <Button href={`/blog/${post.slug}/`}>Read post &rarr;</Button>
   </div>
 

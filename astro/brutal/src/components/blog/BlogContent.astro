@@ -1,24 +1,55 @@
 ---
+import path from "path";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 interface Props {
-  content: {
-    author: string
-    pubDate: string
-  }
+  content: { [key: string]: any } & {
+    author: string | undefined;
+    pubDate: string;
+    title: string;
+    imgUrl: string;
+  };
 }
 
 const { content } = Astro.props;
-const author = content.author || 'Dror';
+
+const author = content.author || "Dror";
+
 const as_rfc = new Date(content.pubDate).toISOString();
-const date = as_rfc.split('T')[0];
-const time = as_rfc.split('T')[1].split('.')[0].split(':').slice(0, 2).join(':');
-const tz = as_rfc.endsWith('Z') ? '' : as_rfc.slice(-6);
+const date = as_rfc.split("T")[0];
+const time = as_rfc
+  .split("T")[1]
+  .split(".")[0]
+  .split(":")
+  .slice(0, 2)
+  .join(":");
+const tz = as_rfc.endsWith("Z") ? "" : as_rfc.slice(-6);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/covers/*.{jpeg,jpg,png,gif}"
+);
+
+let img_path = "";
+for (const imgPath in images) {
+  const myFilename = path.basename(content.imgUrl);
+  const filename = path.basename(imgPath);
+  if (filename === myFilename) {
+    img_path = imgPath;
+    break;
+  }
+}
+const aImg = images[img_path]();
 ---
-<article class='prose-slate w-sm md:w-prose md:prose poppins'>
-  <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
-  <p class='text-slate text-sm md:text-base'>
-    {date} {time} UTC{tz} by {author}
+
+<article class="prose-slate w-sm md:w-prose md:prose poppins">
+  <a href="/blog/" title="Back to blog">&larr; Back to blog</a>
+  <p class="text-slate text-sm md:text-base">
+    {date}
+    {time} UTC{tz} by {author}
   </p>
+  <h1>{content.title}</h1>
+  <Image src={aImg} alt={content.title} class="w-full h-96 object-cover" />
   <slot />
-  <p class='text-slate'>Written by {author}</p>
-  <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
+  <p class="text-slate">Written by {author}</p>
+  <a href="/blog/" title="Back to blog">&larr; Back to blog</a>
 </article>

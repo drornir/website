@@ -13,16 +13,18 @@ const socialIcons = [
     name: 'GitHub',
     url: 'https://github.com/drornir/website',
     icon: 'i-uil-github',
+    handle: '@drornir',
   },
   {
     name: 'Twitter',
     url: 'https://www.twitter.com/drornir',
     icon: 'i-uil-twitter',
+    handle: '@drornir'
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/dror-nir-5b49a159',
-    icon: 'i-uil-linkedin',
+    icon: 'i-uil-linkedin'
   },
   { name: 'RSS', url: '/feed.xml', icon: 'i-uil-rss' },
 ];
@@ -58,7 +60,7 @@ const { pageTitle } = Astro.props;
               href={item.url}
               class='hover:text-green hover:underline transition-all duration-150 ease-in-out'
               target='_blank'
-              title={`'See @ElianCodes on ${item.name}`}
+              title={`Follow ${item.handle || 'me'} on ${item.name}`}
             >
               <div class:list={[item.icon, 'w-6 h-6']} />
             </a>

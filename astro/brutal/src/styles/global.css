@@ -12,7 +12,11 @@
   filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
 }
 
-:root 
+span.brutal-pill {
+    white-space: nowrap;
+}
+
+:root
 {  /* ---- ⚫️ Colors ⚪️ ---- */
   /* Base Tokens */
   --sys-color-white: #FFFFFF;

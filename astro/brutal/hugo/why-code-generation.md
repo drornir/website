@@ -10,6 +10,11 @@ tags:
  - Abstract
 layout: '../../layouts/BlogPost.astro'
 ---
+
+# Why Code Generation?
+
+![Photo by Iñaki del Olmo](../../assets/covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg)
+
 Photo by [Iñaki del Olmo](https://unsplash.com/@inakihxz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 on [Unsplash](https://unsplash.com/photos/Trn2-DwoEr0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
