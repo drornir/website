@@ -8,13 +8,6 @@ import cloudflare from "@astrojs/cloudflare";
 const config ={
     site: "https://drornir.dev",
 
-    redirects: {
-      "/posts/[...slug]": {
-        status: 302,
-        destination: "/blog/[...slug]",
-      }
-    },
-
     integrations: [
       mdx(),
       sitemap(),
@@ -31,9 +24,21 @@ const config ={
             enabled: false,
         }
     }),
+
+    redirects: {
+        "/posts/*": {
+          status: 302,
+          destination: "/blog/*",
+        }
+      },
   }
 
-
+// getCollection("blog").forEach((post) => {
+//     config.redirects[`/posts/${post.slug}`] = {
+//         status: 302,
+//         destination: `/blog/${post.slug}/`,
+//     }
+// });
 
 // https://astro.build/config
 export default defineConfig(config);

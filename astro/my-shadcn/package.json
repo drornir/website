@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "clean": "rm -rf ./dist",
     "preview": "astro preview",
     "astro": "astro",
     "shadcn": "npx shadcn@latest",
