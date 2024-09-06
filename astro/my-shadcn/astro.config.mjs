@@ -9,7 +9,10 @@ const config ={
     site: "https://drornir.dev",
 
     redirects: {
-      "/posts/[...slug]": "/blog/[...slug]",
+      "/posts/[...slug]": {
+        status: 302,
+        destination: "/blog/[...slug]",
+      }
     },
 
     integrations: [
