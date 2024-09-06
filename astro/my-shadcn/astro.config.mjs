@@ -5,6 +5,14 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import cloudflare from "@astrojs/cloudflare";
 
+/***
+ * @typedef {import("astro/config").AstroUserConfig} AstroUserConfig
+ */
+
+// https://astro.build/config
+/**
+ *  @type {AstroUserConfig}
+ */
 const config = {
   site: "https://drornir.dev",
 
@@ -37,5 +45,4 @@ const config = {
   },
 };
 
-// https://astro.build/config
 export default defineConfig(config);
