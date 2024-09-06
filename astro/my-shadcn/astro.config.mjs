@@ -28,17 +28,10 @@ const config ={
     redirects: {
         "/posts/*": {
           status: 302,
-          destination: "/blog/*",
+          destination: "/blog/:splat",
         }
       },
   }
-
-// getCollection("blog").forEach((post) => {
-//     config.redirects[`/posts/${post.slug}`] = {
-//         status: 302,
-//         destination: `/blog/${post.slug}/`,
-//     }
-// });
 
 // https://astro.build/config
 export default defineConfig(config);
