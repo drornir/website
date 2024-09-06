@@ -3,5 +3,7 @@
     "Astro"
   ],
   "astro.language-server.ls-path": "astro/my-shadcn/node_modules/.bin",
-
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

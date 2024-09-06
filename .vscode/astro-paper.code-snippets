@@ -1,0 +1,30 @@
+{
+    "Frontmatter": {
+      "scope": "markdown,",
+      "prefix": "frontmatter",
+      "body": [
+        "---",
+        "date: $CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND$CURRENT_TIMEZONE_OFFSET",
+        "title: $1",
+        "draft: ${2|true,false|}",
+        "cover:",
+        "  image: /covers/${3:awkward_gopher.jpg}",
+        "tags:",
+        "  - $4",
+        "description: |",
+        "  ${5: Description}",
+        "---",
+      ],
+      "description": "Adds the frontmatter block for the AstroPaper Blog post"
+    },
+    "Blog Template": {
+      "scope": "markdown",
+      "prefix": "template",
+      "body": [
+        "${1:frontmatter}",
+        "",
+        "${2: hi}",
+      ],
+      "description": "Adds the template for the AstroPaper Blog post. You will need to trigger the snippet modal on the 'frontmatter' line to insert the other snipper."
+    }
+  }
