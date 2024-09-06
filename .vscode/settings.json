@@ -1,0 +1,7 @@
+{
+  "cSpell.words": [
+    "Astro"
+  ],
+  "astro.language-server.ls-path": "astro/my-shadcn/node_modules/.bin",
+
+}
