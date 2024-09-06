@@ -23,7 +23,7 @@ const config ={
 
     output: "server",
     adapter: cloudflare({
-        imageService: "compile",
+        imageService: "cloudflare",
         platformProxy: {
             enabled: false,
         }

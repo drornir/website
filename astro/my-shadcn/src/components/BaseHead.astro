@@ -8,7 +8,8 @@ interface Props {
   description: string;
   cover: {
     image: string;
-  };
+    ...;
+  } | null;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
