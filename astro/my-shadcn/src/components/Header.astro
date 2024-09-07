@@ -1,17 +1,17 @@
 ---
 import HeaderLink from "./HeaderLink.astro"
+import { DarkModeToggle } from "./DarkModeToggle"
 import { CircleUser, Menu, Package2, Search } from "lucide-react"
 import { SITE_TITLE } from "../consts"
 ---
 
-<header
-  class="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6"
->
+<header class="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
   <nav>
     <div class="internal-links">
       <HeaderLink href="/">{SITE_TITLE}</HeaderLink>
       <HeaderLink href="/blog">/blog</HeaderLink>
     </div>
+    <DarkModeToggle client:load />
     <div class="social-links">
       <a href="https://m.webtoo.ls/@astro" target="_blank">
         <span class="sr-only">Follow Astro on Mastodon</span>

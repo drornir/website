@@ -2,6 +2,7 @@
 export default {
   semi: false,
   tabWidth: 2,
+  printWidth: 140,
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
