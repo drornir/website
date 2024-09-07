@@ -1,9 +1,9 @@
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
-import cloudflare from "@astrojs/cloudflare";
+import { defineConfig } from "astro/config"
+import mdx from "@astrojs/mdx"
+import sitemap from "@astrojs/sitemap"
+import react from "@astrojs/react"
+import tailwind from "@astrojs/tailwind"
+import cloudflare from "@astrojs/cloudflare"
 
 /***
  * @typedef {import("astro/config").AstroUserConfig} AstroUserConfig
@@ -43,6 +43,6 @@ const config = {
       destination: "/blog/:splat",
     },
   },
-};
+}
 
-export default defineConfig(config);
+export default defineConfig(config)

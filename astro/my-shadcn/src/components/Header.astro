@@ -1,15 +1,16 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro"
+import { CircleUser, Menu, Package2, Search } from "lucide-react"
+import { SITE_TITLE } from "../consts"
 ---
 
-<header>
+<header
+  class="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6"
+>
   <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
     <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/">{SITE_TITLE}</HeaderLink>
+      <HeaderLink href="/blog">/blog</HeaderLink>
     </div>
     <div class="social-links">
       <a href="https://m.webtoo.ls/@astro" target="_blank">
