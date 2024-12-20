@@ -23,20 +23,12 @@ const { title, description, cover = { image: "/profile.png" } } = Astro.props
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link
-  rel="preload"
-  href="/fonts/atkinson-regular.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="/fonts/atkinson-bold.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
+<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/PTSerif-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/PTSerif-Bold.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/PTSerif-Italic.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/PTSerif-BoldItalic.ttf" as="font" type="font/ttf" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -51,41 +43,29 @@ const { title, description, cover = { image: "/profile.png" } } = Astro.props
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta
-  property="og:image"
-  content={new URL(
-    cover.image.startsWith("/") ? cover.image : "/" + cover.image,
-    Astro.url,
-  )}
-/>
+<meta property="og:image" content={new URL(cover.image.startsWith("/") ? cover.image : "/" + cover.image, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta
-  property="twitter:image"
-  content={new URL(
-    cover.image.startsWith("/") ? cover.image : "/" + cover.image,
-    Astro.url,
-  )}
-/>
+<meta property="twitter:image" content={new URL(cover.image.startsWith("/") ? cover.image : "/" + cover.image, Astro.url)} />
 <script is:inline>
-	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
-		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme")
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  }
+  const isDark = getThemePreference() === "dark"
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark")
 
-	if (typeof localStorage !== 'undefined') {
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		});
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-	}
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark")
+      localStorage.setItem("theme", isDark ? "dark" : "light")
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+  }
 </script>

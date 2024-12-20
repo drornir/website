@@ -3,6 +3,20 @@ export default {
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    fontFamily: {
+      sans: [
+        "Atkinson",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "'Apple Color Emoji'",
+        "'Segoe UI Emoji'",
+        "'Segoe UI Symbol'",
+        "'Noto Color Emoji'",
+      ],
+      serif: ["'PT Serif'", "ui-serif", "Georgia", "Cambria", "'Times New Roman'", "Times", "serif"],
+      mono: ["'PT Mono'", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "'Liberation Mono'"],
+    },
     extend: {
       borderRadius: {
         lg: "var(--radius)",
@@ -50,8 +64,9 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        code: "hsl(var(--code))",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 }

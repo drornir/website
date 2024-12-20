@@ -48,7 +48,7 @@ popular tools means a lot of people want more that what JS has to offer on
 its own.
 
 With the rise of these toolchains that generate javascript as output,
-one has to wonder wht bother compiling our code to a high level, dynamically
+one has to wonder why bother compiling our code to a high level, dynamically
 typed language? The answer to that question is WASM!
 
 WASM is a way for people who want to develop in practically any language they

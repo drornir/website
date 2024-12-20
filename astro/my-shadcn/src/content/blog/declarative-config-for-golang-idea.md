@@ -85,7 +85,7 @@ As you can see, the idea is to have the **user defined** `Config` struct
 
 #### Documentation for Free
 
-As a young junior dev, my boss told me one of the best advices I got:
+As a young junior dev, my boss told me one of the best advice I got:
 
 > "If it's not in a doc, it doesn't exist" - Eddy K
 

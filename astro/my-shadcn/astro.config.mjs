@@ -24,6 +24,12 @@ const config = {
       applyBaseStyles: false,
     }),
   ],
+  markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "catppuccin-mocha",
+    },
+  },
 
   output: "server",
   adapter: cloudflare({

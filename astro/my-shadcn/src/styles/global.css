@@ -2,29 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 47.4% 11.2%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 47.4% 11.2%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 100% 50%;
-  --destructive-foreground: 210 40% 98%;
-  --ring: 215 20.2% 65.1%;
-  --radius: 0.5rem;
-} */
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -39,112 +16,43 @@
   font-style: normal;
   font-display: swap;
 }
-/* body {
-  font-family: "Atkinson", sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  background: hsl(var(--background));
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  color: hsl(var(--foreground));
-  font-size: 20px;
-  line-height: 1.7;
-} */
-/*
-main {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  margin: auto;
-  padding: 3em 1em;
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
-  line-height: 1.2;
-}
-h1 {
-  font-size: 3.052em;
-}
-h2 {
-  font-size: 2.441em;
-}
-h3 {
-  font-size: 1.953em;
-}
-h4 {
-  font-size: 1.563em;
-}
-h5 {
-  font-size: 1.25em;
-}
-strong,
-b {
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Bold.ttf") format("truetype");
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
-a {
-  color: var(--accent);
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
-a:hover {
-  color: var(--accent);
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
 }
-p {
-  margin-bottom: 1em;
+
+@font-face {
+  font-family: "PT Mono";
+  src: url("/fonts/PTMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
-.prose p {
-  margin-bottom: 2em;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-code {
-  padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
-  border-radius: 2px;
-}
-pre {
-  padding: 1.5em;
-  border-radius: 8px;
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 0 0 0 20px;
-  margin: 0px;
-  font-size: 1.333em;
-}
-hr {
-  border: none;
-  border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-  body {
-    font-size: 18px;
-  }
-  main {
-    padding: 1em;
-  }
-}
-*/
+
 .sr-only {
   border: 0;
   padding: 0;
@@ -188,30 +96,40 @@ hr {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --catppuccin-mocha-bg: 240, 21.05%, 14.9%; /* this is from catpucchin */
+    --my-bg: 273.16 29.23% 25.49%;
+    --my-bg-lighter: 249.41, 27.57%, 36.27%;
+    --my-text-fg: 0 0 90%;
+    --my-text-fg-reverse: 0 0 10%;
+    --my-red: 347.55, 43.8%, 47.45%;
+    --my-green: 165.71, 25.71%, 48.04%;
+    --my-pink: 3.83, 50.54%, 81.76%;
+    /**/
+    --background: var(--my-bg);
+    --foreground: var(--my-text-fg);
+    --card: var(--my-bg-lighter);
+    --card-foreground: var(--my-text-fg);
+    --popover: var(--my-bg-lighter);
+    --popover-foreground: var(--my-text-fg);
+    --primary: var(--my-red);
+    --primary-foreground: var(--my-text-fg);
+    --secondary: var(--my-pink);
+    --secondary-foreground: var(--my-text-fg-reverse);
+    /* --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%; */
+    --accent: var(--my-pink);
+    --accent-foreground: var(--my-bg-darker);
+    /* --destructive: var(--my-red); */
+    /* --destructive-foreground: var(--foreground); */
+    --border: var(--foreground);
+    /* --input: 240, 21.05%, 14.9%;
     --ring: 212.7 26.8% 83.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-5: 340 75% 55%; */
+    --code: var(--catppuccin-mocha-bg);
   }
 }
 
@@ -220,6 +138,15 @@ hr {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-serif text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans;
+  }
+  .my-astro-content {
+    @apply prose dark:prose-invert prose-code:text-secondary prose-code:bg-code prose-code:rounded-sm prose-h1:text-3xl prose-li:marker:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-primary-foreground prose-p:text-justify prose-img:rounded-lg prose-hr:border-border prose-lead:leading-normal prose-blockquote:border-primary max-w-none rounded-lg bg-card p-6 leading-normal;
   }
 }

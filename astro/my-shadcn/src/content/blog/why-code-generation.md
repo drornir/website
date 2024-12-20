@@ -220,7 +220,7 @@ const (
 )
 ```
 
-In the above snippet, we instrcut `stringer` to override the string representation
+In the above snippet, we instruct `stringer` to override the string representation
 to be `<string>` instead of `ValueTypeString`.
 
 `jsonenums` uses the `Stringer` interface if you've implemented it. Meaning that

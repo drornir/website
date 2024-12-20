@@ -80,7 +80,7 @@ func (ri realImpl) LookPath(name string) (fullpath string, err error) {
 }
 ```
 
-Now we have to implementations, but how do we use them? Interfaces! we define an inteface **Next to where we use it**:
+Now we have to implementations, but how do we use them? Interfaces! we define an interface **Next to where we use it**:
 
 ```go
 type lookPather interface {

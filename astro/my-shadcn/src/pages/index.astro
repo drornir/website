@@ -7,33 +7,38 @@ import HTML from "../layouts/HTML.astro"
 ---
 
 <HTML>
-  <main>
-    <h1>Hello, I'm Dror! 👋</h1>
-    <p>
-      I'm a developer, SWE, and maker. I love practical products and solutions over fancy ones. The buzzwords I'm most attracted to are DX,
-      DevOps, Platform. But I don't really buy into the idea of this hype cycle. The idea is the same as the original Agile Manifesto - be
-      lean, release all the time, stay connected to the users, etc.
-    </p>
-    <p>
-      On a lower, practical level, I'm influenced by the UNIX philosophy, and articles like <a target="_blank" href="https://grugbrain.dev/"
-        >Grug Brain</a
-      >. Systems today are becoming a lot more complex, but I would argue it's usually not justified by the actual circumstances.
-    </p>
-    <h2>What is in here?</h2>
-    <p>
-      This is my place to document my knowledge and opinions about software development, cloud technology, life philosophy or whatever. Some
-      of my future goals are to also deploy some web application to this website, and other interactive things.
-    </p>
-    <p>
-      I'm currently working at <a target="_blank" href="https://velocity.tech/">Velocity</a> as general developer. We're trying to solve the
-      basic problem of the field of Observability. It's a small startup with big ambitions 🚀. We're trying to integrate LLMs into the into your
-      existing setup. This is why you'll see some articles about python.
-    </p>
-    <p>
-      But mostly, I'm a fanboy of Go. More than the language itself, I love the pragmatism and thoughtfulness that comes into the process of
-      building this language. The ecosystem is simple and powerful (albeit missing some key features in the code generation front). What I
-      like about it is that it's mostly about the features that don't exist in the language that excite me. My favorite thing is,
-      ultimately, is the liberating feeling of the <strong>lack of of choices</strong>.
-    </p>
+  <main class="mx-auto max-w-3xl px-4 py-8">
+    <div class="my-astro-content">
+      <h1 class="my-8 rounded-md bg-card p-2 text-4xl">Hello, I'm Dror! 👋</h1>
+      <article class="text-md space-y-4 leading-relaxed">
+        <p>
+          I'm a developer, SWE, and maker. I love practical products and solutions over fancy ones. The buzzwords I'm most attracted to are
+          DX, DevOps, Platform. But I don't really buy into the idea of this hype cycle. The idea is the same as the original Agile
+          Manifesto - be lean, release all the time, stay connected to the users, etc.
+        </p>
+        <p>
+          On a lower, practical level, I'm influenced by the UNIX philosophy, and articles like <a
+            target="_blank"
+            href="https://grugbrain.dev/">Grug Brain</a
+          >. Systems today are becoming a lot more complex, but I would argue it's usually not justified by the actual circumstances.
+        </p>
+        <h2 class="text-2xl font-semibold">What is in here?</h2>
+        <p>
+          This is my place to document my knowledge and opinions about software development, cloud technology, life philosophy or whatever.
+          Some of my future goals are to also deploy some web application to this website, and other interactive things.
+        </p>
+        <p>
+          I'm currently working at <a target="_blank" href="https://velocity.tech/">Velocity</a> as general developer. We're trying to solve
+          the basic problem of the field of Observability. It's a small startup with big ambitions 🚀. We're trying to integrate LLMs into the
+          into your existing setup. This is why you'll see some articles about python.
+        </p>
+        <p>
+          But mostly, I'm a fanboy of Go. More than the language itself, I love the pragmatism and thoughtfulness that comes into the
+          process of building this language. The ecosystem is simple and powerful (albeit missing some key features in the code generation
+          front). What I like about it is that it's mostly about the features that don't exist in the language that excite me. My favorite
+          thing is, ultimately, is the liberating feeling of the <strong>lack of of choices</strong>.
+        </p>
+      </article>
+    </div>
   </main>
 </HTML>
