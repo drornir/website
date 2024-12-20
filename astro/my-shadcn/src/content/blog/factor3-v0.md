@@ -2,7 +2,7 @@
 title: "Factor3 (v0) - a code gen for configuring your Go app"
 date: "2024-01-08T15:00:00+02:00"
 cover:
-  image: covers/peter-herrmann-IukQrXhSvPY-unsplash.jpg
+  image: covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg
 tags:
   - Code Generation
   - Metaprogramming
@@ -10,8 +10,8 @@ tags:
   - Factor3
 ---
 
-Photo by [Peter Herrmann](https://unsplash.com/@tama66?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
-on [Unsplash](https://unsplash.com/photos/grayscale-photo-of-metal-pipe-IukQrXhSvPY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+Photo by [Iñaki del Olmo](https://unsplash.com/@inakihxz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+on [Unsplash](https://unsplash.com/photos/Trn2-DwoEr0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 ---
 
