@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Serif";
+  src: url("/fonts/PTSerif-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PT Mono";
+  src: url("/fonts/PTMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --catppuccin-mocha-bg: 240, 21.05%, 14.9%; /* this is from catpucchin */
+    /* https://colorhunt.co/palette/432e544b4376ae445ae8bcb9 */
+    /* --my-bg: 273.16 29.23% 25.49%;
+    --my-bg-lighter: 249.41, 27.57%, 36.27%;
+    --my-text-fg: 0 0 90%;
+    --my-text-fg-reverse: 0 0 10%;
+    --my-primary: 347.55, 43.8%, 47.45%;
+    --my-green: 165.71, 25.71%, 48.04%;
+    --my-secondary: 3.83, 50.54%, 81.76%; */
+    /**/
+    /* https://colorhunt.co/palette/000000262a56b8621be3ccae 👺 and this is related: https://colorhunt.co/palette/3630624d4c7df99417f5f5f5 */
+    --my-bg: 235 38.71% 8%;
+    --my-bg-lighter: 235, 38.71%, 24.31%;
+    --my-text-fg: 0 0 95%;
+    --my-text-fg-reverse: 0 0 10%;
+    --my-primary: 27.13, 74.41%, 41.37%;
+    --my-secondary: 33.96, 48.62%, 78.63%;
+    /**/
+    --background: var(--my-bg);
+    --foreground: var(--my-text-fg);
+    --card: var(--my-bg-lighter);
+    --card-foreground: var(--my-text-fg);
+    --popover: var(--my-bg-lighter);
+    --popover-foreground: var(--my-text-fg);
+    --primary: var(--my-primary);
+    --primary-foreground: var(--my-text-fg);
+    --secondary: var(--my-secondary);
+    --secondary-foreground: var(--my-text-fg-reverse);
+    /* --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%; */
+    --accent: var(--my-secondary);
+    --accent-foreground: var(--my-bg-darker);
+    /* --destructive: var(--my-red); */
+    /* --destructive-foreground: var(--foreground); */
+    --border: var(--foreground);
+    /* --input: 240, 21.05%, 14.9%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%; */
+    --code: var(--catppuccin-mocha-bg);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-serif text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans;
+  }
+  .my-astro-content {
+    @apply prose dark:prose-invert prose-code:text-secondary prose-code:bg-code prose-code:rounded-sm prose-h1:text-3xl prose-li:marker:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-foreground prose-strong:text-foreground prose-p:text-justify prose-p:text-foreground prose-headings:text-foreground prose-img:rounded-lg prose-hr:border-border prose-lead:leading-normal prose-blockquote:border-primary max-w-none rounded-lg bg-card p-6 leading-normal;
+  }
+}

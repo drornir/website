@@ -1,0 +1,40 @@
+---
+import BaseHead from "../../components/BaseHead.astro"
+import Header from "../../components/Header.astro"
+import Footer from "../../components/Footer.astro"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts"
+import { getCollection } from "astro:content"
+import FormattedDate from "../../components/FormattedDate.astro"
+import HTML from "@/layouts/HTML.astro"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<HTML>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <main class="mx-auto max-w-3xl px-4 py-8">
+    <section>
+      <ul class="m-0 flex list-none flex-wrap gap-4 p-0">
+        {
+          posts.map((post) => (
+            <li class="w-[calc(50%-1rem)] rounded-md bg-card p-4">
+              <a href={`/blog/${post.slug}/`}>
+                <img
+                  class="mb-2 rounded-lg border border-foreground bg-white"
+                  width={720}
+                  height={360}
+                  src={post.data.cover.image}
+                  alt=""
+                />
+                <h4 class="">{post.data.title}</h4>
+              </a>
+              <p class="">
+                <FormattedDate date={post.data.date} />
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</HTML>

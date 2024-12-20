@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogSummaryCard from './BlogSummaryCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+const postsSorted = posts
+    .sort((p1, p2) => {
+      let [p1s, p2s] = [
+        p1.data.pubDate.toISOString(),
+        p2.data.pubDate.toISOString(),
+      ];
+      return (-1) * p1s.localeCompare(p2s);
+    })
+---
+
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    postsSorted.map((post) => {
+      return (
+        <li>
+          <BlogSummaryCard post={post} />
+        </li>
+      );
+    })
+  }
+</ul>
