@@ -97,13 +97,22 @@
   }
   .dark {
     --catppuccin-mocha-bg: 240, 21.05%, 14.9%; /* this is from catpucchin */
-    --my-bg: 273.16 29.23% 25.49%;
+    /* https://colorhunt.co/palette/432e544b4376ae445ae8bcb9 */
+    /* --my-bg: 273.16 29.23% 25.49%;
     --my-bg-lighter: 249.41, 27.57%, 36.27%;
     --my-text-fg: 0 0 90%;
     --my-text-fg-reverse: 0 0 10%;
-    --my-red: 347.55, 43.8%, 47.45%;
+    --my-primary: 347.55, 43.8%, 47.45%;
     --my-green: 165.71, 25.71%, 48.04%;
-    --my-pink: 3.83, 50.54%, 81.76%;
+    --my-secondary: 3.83, 50.54%, 81.76%; */
+    /**/
+    /* https://colorhunt.co/palette/000000262a56b8621be3ccae 👺 and this is related: https://colorhunt.co/palette/3630624d4c7df99417f5f5f5 */
+    --my-bg: 235 38.71% 8%;
+    --my-bg-lighter: 235, 38.71%, 24.31%;
+    --my-text-fg: 0 0 95%;
+    --my-text-fg-reverse: 0 0 10%;
+    --my-primary: 27.13, 74.41%, 41.37%;
+    --my-secondary: 33.96, 48.62%, 78.63%;
     /**/
     --background: var(--my-bg);
     --foreground: var(--my-text-fg);
@@ -111,13 +120,13 @@
     --card-foreground: var(--my-text-fg);
     --popover: var(--my-bg-lighter);
     --popover-foreground: var(--my-text-fg);
-    --primary: var(--my-red);
+    --primary: var(--my-primary);
     --primary-foreground: var(--my-text-fg);
-    --secondary: var(--my-pink);
+    --secondary: var(--my-secondary);
     --secondary-foreground: var(--my-text-fg-reverse);
     /* --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%; */
-    --accent: var(--my-pink);
+    --accent: var(--my-secondary);
     --accent-foreground: var(--my-bg-darker);
     /* --destructive: var(--my-red); */
     /* --destructive-foreground: var(--foreground); */
@@ -147,6 +156,6 @@
     @apply font-sans;
   }
   .my-astro-content {
-    @apply prose dark:prose-invert prose-code:text-secondary prose-code:bg-code prose-code:rounded-sm prose-h1:text-3xl prose-li:marker:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-primary-foreground prose-p:text-justify prose-img:rounded-lg prose-hr:border-border prose-lead:leading-normal prose-blockquote:border-primary max-w-none rounded-lg bg-card p-6 leading-normal;
+    @apply prose dark:prose-invert prose-code:text-secondary prose-code:bg-code prose-code:rounded-sm prose-h1:text-3xl prose-li:marker:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-foreground prose-strong:text-foreground prose-p:text-justify prose-p:text-foreground prose-headings:text-foreground prose-img:rounded-lg prose-hr:border-border prose-lead:leading-normal prose-blockquote:border-primary max-w-none rounded-lg bg-card p-6 leading-normal;
   }
 }
