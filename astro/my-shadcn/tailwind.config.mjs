@@ -66,6 +66,14 @@ export default {
         },
         code: "hsl(var(--code))",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            "blockquote p:first-of-type::before": false,
+            "blockquote p:first-of-type::after": false,
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

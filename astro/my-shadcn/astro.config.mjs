@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config"
+import { defineConfig, passthroughImageService } from "astro/config"
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
 import react from "@astrojs/react"
@@ -32,8 +32,11 @@ const config = {
   },
 
   output: "server",
+  image: {
+    service: passthroughImageService(),
+  },
   adapter: cloudflare({
-    imageService: "cloudflare",
+    imageService: "passthrough",
     platformProxy: {
       enabled: false,
     },
