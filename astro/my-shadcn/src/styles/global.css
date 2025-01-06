@@ -156,6 +156,14 @@
     @apply font-sans;
   }
   .my-astro-content {
-    @apply prose dark:prose-invert prose-code:text-secondary prose-code:bg-code prose-code:rounded-sm prose-h1:text-3xl prose-li:marker:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-foreground prose-strong:text-foreground prose-p:text-justify prose-p:text-foreground prose-headings:text-foreground prose-img:rounded-lg prose-hr:border-border prose-lead:leading-normal prose-blockquote:border-primary max-w-none rounded-lg bg-card p-6 leading-normal;
+    @apply hyphens-auto text-pretty break-words;
+    @apply prose prose-lg dark:prose-invert prose-img:rounded-lg prose-hr:my-6 prose-hr:border-border prose-lead:leading-loose;
+    @apply prose-p:my-3 prose-p:text-justify prose-p:text-foreground;
+    @apply prose-a:text-foreground prose-blockquote:my-6 prose-blockquote:border-primary prose-strong:text-foreground;
+    @apply prose-ul:my-3 prose-li:my-0 prose-li:marker:text-foreground;
+    @apply prose-code:rounded-sm prose-code:bg-code prose-code:text-secondary;
+    @apply prose-headings:mb-6 prose-headings:mt-12 prose-headings:font-bold prose-headings:text-foreground;
+    @apply prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg;
+    @apply max-w-none rounded-lg bg-card p-6 leading-normal;
   }
 }
