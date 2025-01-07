@@ -1,0 +1,232 @@
+---
+title: "DX and Dev Tools' place in the Hype Cycle"
+date: "2025-01-07T18:00:00+02:00"
+cover:
+  image: covers/tim-marshall-uanoYn1AmPs-unsplash.jpg
+tags:
+  - DX
+  - Dev Tools
+  - Opinion
+  - Startup
+---
+
+I've always believed in Dev Tools. Recently, there was a surge in popularity of
+Dev Tools and improving the UX a developer experiences. I got really excited a couple of years
+ago when I saw [startups](https://www.upbound.io/) [emerging](https://roadie.io/) in this space.
+But recently I hear that this whole field was deemed "too expensive" or "not worth it"
+by both potential customers and even investors.
+
+I fundamentally disagree with this sentiment. I agree that _today_ it's too expensive,
+but I disagree with **investors** who don't believe in the _future_ and potential of
+DevOps tools.
+
+I'd like to explain why I think this recent decline in popularity is actually
+very natural, and is **not** a strong enough signal to keep me from working in this field.
+
+# The Hype Cycle
+
+> [From **Gartner Hype Cycle** on Wikipedia](https://en.wikipedia.org/wiki/Gartner_hype_cycle)
+
+<div class="w-100 mx-4 mx-auto rounded-lg bg-secondary">
+  <a
+    target="_blank"
+    class="mx-auto block w-full p-6"
+    title="Jeremykemp at English Wikipedia, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons"
+    href="https://commons.wikimedia.org/wiki/File:Gartner_Hype_Cycle.svg"
+  >
+    <img
+      class="m-0 w-full"
+      width="640"
+      alt="A visualisation of Gartner&#039;s Hype Cycle, a methodology for describing how new technologies, and the perceptions of them, change as they emerge."
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Gartner_Hype_Cycle.svg/512px-Gartner_Hype_Cycle.svg.png?20240925040539"
+    ></img>
+  </a>
+</div>
+
+The Gartenr hype cycle is a simplified model to
+
+> "represent the maturity, adoption, and social application of specific technologies".
+
+It's a good model, which we won't dive deep into in this post. However, for those who are unfamiliar with the hype cycle, the idea is that when new tech emrges, it initially
+goes up in so much popularity that it becomes a bubble, which collapses but eventually recovers and stabilizes.
+
+This is of course an idealized model, and it is careful not specify how long each step takes.
+It also _doesn't specify how high_ are the peaks and _how low_ are the lows.
+The "Pleateau of Productivity" (see image above) might end up being very close to zero.
+You can see below how they add that dimension of time by coloring the dots on the graph.
+
+You can see an example on [Gratner's Blog](https://www.gartner.com/en/articles/what-s-new-in-artificial-intelligence-from-the-2023-gartner-hype-cycle)
+where they try to place different technologies on this curve. This is an example for AI:
+
+<a
+  title="To Gartner's Blog Post"
+  href="https://www.gartner.com/en/articles/what-s-new-in-artificial-intelligence-from-the-2023-gartner-hype-cycle"
+  target="_blank"
+>
+  <img
+    alt="Gartner hype cycle for AI 2023"
+    src="https://emt.gartnerweb.com/ngw/globalassets/en/articles/images/hype-cycle-for-artificial-intelligence-2023.png"
+  ></img>
+</a>
+
+I find Gartner's model useful when I'm thinking about the next thing I want to work on.
+I want to solve **actual** problems. Duh, right? Who _actively_ wants to work on something useless?
+(A lot of people actually. But that's besides the point)
+
+The point is that the most basic human way to figure out if something is real is to simply ask around!
+
+- Hear a sound in the middle of the night? _Wake your partner!_
+- Have a hard school assignment? _Ask your friends if it's also hard for them._
+- Don't know the capital of Germany? _Google it!_
+
+This usually works, right? Well, usually yes, but the Gartner model suggests there's a caveat.
+The model says that it takes time for people to understand what you can and can't do with a certain piece of tech.
+
+Meaning, at scale and on average, it takes time for society to understand the real value of a certain piece of tech.
+
+Well, ok. This is pretty abstract. It's not very concrete on how long this cycle takes and how
+to get around this.
+
+But for me, this is a reminder to try to consider multiple data points before ruling out
+a potential tech _just because_ it's _current_ public opinion is that it's not good enough.
+
+# How I see Dev Tooling
+
+I've always been interested in the effect the tools we use on the products we build.
+I understand that this belief system exposes me to confirmation bias towards the effectiveness
+of Dev Tools, so I'd love to hear from you if you see me hand waving too much here;
+
+I believe the tools we use to build things have a tremendous amount
+of influence on the products we end up building. Checkout <a target="_blank"
+href="https://www.youtube.com/watch?v=ZfytHvgHybA&list=PLjhH01A4YOO3h0LwGNTf2F37L0_Gn7O4D&index=2">
+Bret Victor's Talk on YouTube</a> to dig deeper into how exactly. But the main point is that
+an immediate feedback loop from the tools is very valuable to the human brain.
+
+Practically, for me it translates to the idea that good observability tools and automation are the main drivers
+of innovation in tech. This should in turn generate more revenue than what you spent
+on the observability and and automations, creating a positive feedback loop ♻️.
+
+But how? Well, the gist theory is that it is easier for our constrained brains to think and explore
+ideas if we can offload things are brain does into the computer. For example with observability,
+consider Traces - we can't really understand what is going on if we look directly at the trace data,
+but once we put it on a nice graph, we can reason about the flow very intuitively. For example
+
+<a
+  target="_blank"
+  title="What's new in distributed trace visualization in Grafana"
+  href="https://grafana.com/blog/2023/08/08/whats-new-in-distributed-trace-visualization-in-grafana/"
+>
+  <img
+    alt="Example Trace Screenshot"
+    width="679"
+    height="441"
+    src="https://grafana.com/media/blog/grafana-tracing-visualization-updates/trace-view-2.png?w=679"
+  ></img>
+</a>
+
+# How the industry looks at Dev Tooling
+
+This idea has gained popularity in recent years. A lot of technical organizations started
+to spend money and effort on DX and Dev Tools. There was a surge in
+[evidence](<https://en.wikipedia.org/wiki/DevOps_Research_and_Assessment#Accelerate_(book)>)
+about how DevOps practices can raise profits and reduce costs for any modern company.
+This movement was a trigger for tech companies wanting to spend more on
+"Developer Productivity Tools", "DevOps" and similar buzzwords. Makes sense.
+
+However, if we look how it turned out in the industry, it seems like DX does not really
+live up to the expectations.
+
+<a
+  title="To latest report on emerging tech"
+  target="_blank"
+  href="https://www.gartner.com/en/articles/hype-cycle-for-emerging-technologies"
+>
+  <img
+    alt="Gartner hype cycle for Emerging Tech 2024"
+    src="https://emt.gartnerweb.com/ngw/globalassets/en/articles/images/hype-cycle-for-emerging-technologies-2024.png"
+  ></img>
+</a>
+
+At the top we can see "Internal Developer Portals", which seems great! But when I look
+more closely, I can't really find any other tech that focuses on the Dev Experience, maybe expect for GitOps.
+
+Most of the emerging techs are AI related as far as I understand. It makes sense that AI
+is showing up all over the hype graph - just open your favorite social network and in five minutes
+I bet you'll see someone talking about AI.
+
+But if you scroll twitter looking for someone talking about
+Internal Developer Portals (IDP) or GitOps, I bet you won't see it as much.
+
+And it's not _just_ on social. From my personal experience, executives in companies are
+reluctant to spend **more** money on Dev Tools. What usually happens is that the dev tools
+they buy and use don't live up to the expectations set in the literature or by the
+product they bought. So companies deprioritize Dev Tools in their budget lines in favor of,
+usually, some AI tech trying to solve the same underlying problem.
+
+The thing is, I don't see this as a problem. This sentiment I hear actually aligns with
+the Hype Cycle! In other words, there were **inflated expectations** towards
+Dev Tools! It's just part of the hype cycle! Nothing to worry about!
+
+# Overcoming the Trough
+
+So up until now I hope I convinced you that Dev Tools _were_ in the Peak
+of Inflated Excpetations, and are no longer there.
+
+Now I want to look at the future. Where are we on the graph now? And, more importantly,
+where are we headed on the graph?
+
+Zooming out of the Gartner graph above, I want to remind you that Dev Tools
+are much more than Portals and GitOps. I'm missing some important concepts, like:
+
+- Internal Developer **Platform**
+- Progressive Deployments
+- API Docs Generation
+- On Demand Dev Env
+- Observability
+
+I think there's potential here because of that. It seems to me that there's a gap
+between the expectations executives have and the actual products they buy.
+Dev Portals and GitOps are not sufficient to create the type of culture and
+environment that the DevOps movement advocates for.
+
+In the language set by Gartner, I think we are way down on the _Trough of Disillusionment_
+because we have a lot of _Enlightenment_ to do! In other words, I see a big enough gap
+between what the theory and litrature promises and what the current technology actually offers.
+
+This makes me confident that it is only a matter of time and effort until we figure this out.
+
+# Developer Productivity is an Iceberg
+
+There's a lot more to Developer Productivity and tooling than what I can possible fit in this blog post.
+I think the industry is only scratching the surface of what is possible and needed.
+
+My best analogy is the famous Iceberg meme ([example](https://blog.palark.com/kubernetes-is-an-iceberg/)).
+From "above water", Developer Productivity seems like a new idea with simple solutions.
+Looking at the Gartener analysis, it seems like creating an IDP and working with GitOps practices
+covers a lot of ground.
+
+But once you actually dig in, there's soooo much _under_ the surface of the water!
+I won't even attempt to enumarete things myself in this post. There are much better
+qualified resources for that.
+
+In fact, this week [Dave Farley](https://www.davefarley.net/?page_id=2), a veteran
+in the Continuous Devlivery space, published a [YouTube video](https://youtu.be/5VpBRmmWqg0?si=KOf_vpM3BgeroWWs)
+reacting to an article aimed at executives that is filled with misinformation
+that goes directly against the science. He explains it better than me so do checkout his video 😉
+
+For me, what Dave is talking about is a good positive signal that there's much more
+potential to be extracted in this field. It's clear to me that the [science](https://dora.dev/) of how to build
+a productive and successful software company is simply not yet understood or implemented.
+
+# Next Steps
+
+I think this post is a good (enough) of **_why_** I'm trying to solve problems
+in this space. I think there's value here.
+
+**_How_** to achieve this is a different topic, which I plan to write more and more about 😄
+
+Hopefully you found value in reading this as well! If you did, stay tuned to hear more 🙌
+
+---
+
+_Cover photo by <a href="https://unsplash.com/@timmarshall?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim Marshall</a> on <a href="https://unsplash.com/photos/ocean-tunnel-wave-uanoYn1AmPs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>_
