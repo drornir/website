@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro"
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
+import { SEO } from "astro-seo" // https://github.com/jonasmerlin/astro-seo
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 ---
 
@@ -9,7 +10,42 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 <html class="dark" lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <slot name="head" />
+    <slot name="head">
+      <SEO
+        title={SITE_TITLE}
+        titleDefault={SITE_TITLE}
+        description={SITE_DESCRIPTION}
+        openGraph={{
+          basic: {
+            title: SITE_TITLE,
+            type: "website",
+            image: "/me.jpg",
+          },
+          optional: {
+            description: SITE_DESCRIPTION,
+          },
+          image: {
+            alt: "Dror's Profile Picture",
+          },
+        }}
+        twitter={{
+          creator: "@drornir",
+        }}
+        extend={{
+          // extending the default link tags
+          link: [{ rel: "icon", href: "/favicon.ico" }],
+          // extending the default meta tags
+          meta: [
+            {
+              name: "twitter:image",
+              content: "/me.jpg",
+            },
+            { name: "twitter:title", content: SITE_TITLE },
+            { name: "twitter:description", content: SITE_DESCRIPTION },
+          ],
+        }}
+      />
+    </slot>
   </head>
   <body class="">
     <Header />

@@ -14,7 +14,7 @@ import cloudflare from "@astrojs/cloudflare"
  *  @type {AstroUserConfig}
  */
 const config = {
-  site: "https://dev.www-ce3.pages.dev",
+  site: "https://drornir.dev",
 
   integrations: [
     mdx(),
