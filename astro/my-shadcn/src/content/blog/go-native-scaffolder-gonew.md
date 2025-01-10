@@ -1,6 +1,7 @@
 ---
 date: 2023-07-31T23:00:00+03:00
 title: "`gonew` - the official Golang scaffolder is in alpha"
+description: gonew is and experiment in go project templates by Russ Cox https://github.com/golang/go/discussions/61669
 cover:
   image: covers/awkward_gopher.jpg
 

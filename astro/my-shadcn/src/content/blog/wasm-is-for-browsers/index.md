@@ -1,5 +1,6 @@
 ---
 title: "I Don't Get Why You Would Use WASM outside of a Browser"
+description: I'm not convinced that WASI is actually worth investing in.
 date: "2024-01-04T20:00:00+02:00"
 cover:
   image: covers/audio-plugins.jpg
