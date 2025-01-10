@@ -15,7 +15,7 @@ export interface Props {
   blog?: Blog
 }
 
-const profilePicURL = URL.parse("/me.jpg", Astro.url)
+const profilePicURL = new URL("/me.jpg", Astro.url)
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
@@ -108,39 +108,4 @@ if (Astro.props.blog) {
       observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
     }
   </script>
-
-  <!-- <SEO
-      title={SITE_TITLE}
-      titleDefault={SITE_TITLE}
-      description={SITE_DESCRIPTION}
-      openGraph={{
-        basic: {
-          title: SITE_TITLE,
-          type: "website",
-          image: "/me.jpg",
-        },
-        optional: {
-          description: SITE_DESCRIPTION,
-        },
-        image: {
-          alt: "Dror's Profile Picture",
-        },
-      }}
-      twitter={{
-        creator: "@drornir",
-      }}
-      extend={{
-        // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.ico" }],
-        // extending the default meta tags
-        meta: [
-          {
-            name: "twitter:image",
-            content: "/me.jpg",
-          },
-          { name: "twitter:title", content: SITE_TITLE },
-          { name: "twitter:description", content: SITE_DESCRIPTION },
-        ],
-      }}
-    /> -->
 </head>
