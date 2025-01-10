@@ -1,17 +1,21 @@
 ---
-import BaseHead from "../../components/BaseHead.astro"
-import Header from "../../components/Header.astro"
-import Footer from "../../components/Footer.astro"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts"
 import { getCollection } from "astro:content"
 import FormattedDate from "../../components/FormattedDate.astro"
 import HTML from "@/layouts/HTML.astro"
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+const posts = (await getCollection("blog")).sort((a, b) => {
+  const ad = a.data.updatedDate ?? a.data.date
+  const bd = b.data.updatedDate ?? b.data.date
+  return bd.valueOf() - ad.valueOf()
+})
 ---
 
-<HTML>
-  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+<HTML
+  head={{
+    title: "Blog",
+    description: "All the posts on my blog",
+  }}
+>
   <main class="mx-auto max-w-3xl px-4 py-8">
     <section>
       <ul class="m-0 flex list-none flex-wrap gap-4 p-0">
@@ -30,6 +34,18 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf()
               </a>
               <p class="">
                 <FormattedDate date={post.data.date} />
+                {post.data.updatedDate && (
+                  <i>
+                    updated <FormattedDate date={post.data.updatedDate} />
+                  </i>
+                )}
+              </p>
+              <p>
+                <ul class="flex flex-row flex-wrap text-sm text-secondary underline">
+                  {post.data.tags.map((tag) => (
+                    <li class="mx-1">#{tag}</li>
+                  ))}
+                </ul>
               </p>
             </li>
           ))

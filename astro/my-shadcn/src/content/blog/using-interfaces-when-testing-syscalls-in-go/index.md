@@ -1,5 +1,6 @@
 ---
 title: "How to test Go functions that make syscalls?"
+description: A basic trick on how to use interfaces to make your code more testable.
 date: "2024-02-27T21:00:00+02:00"
 cover:
   image: covers/golang-renee.png

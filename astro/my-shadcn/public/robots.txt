@@ -1,1 +1,4 @@
-# go ahead
+User-agent: *
+Allow: /
+
+Sitemap: https://drornir.dev/sitemap-index.xml

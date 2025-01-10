@@ -18,7 +18,10 @@ const config = {
 
   integrations: [
     mdx(),
-    sitemap(),
+    sitemap({
+      lastmod: new Date(),
+      xslURL: "/sitemap.xsl",
+    }),
     react(),
     tailwind({
       applyBaseStyles: false,

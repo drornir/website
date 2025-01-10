@@ -1,5 +1,6 @@
 ---
 title: Why Code Generation?
+description: I'm trying to articulate why I'm so pro codegen when it comes to metaprogramming
 date: 2023-07-31T20:55:00+03:00
 cover:
   image: /covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg

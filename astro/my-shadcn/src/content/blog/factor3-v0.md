@@ -1,5 +1,6 @@
 ---
 title: "Factor3 (v0) - a code gen for configuring your Go app"
+description: Using Go's spf13/cobra is not easy, and I want to create a code generation wrapper around it
 date: "2024-01-08T15:00:00+02:00"
 cover:
   image: covers/inaki-del-olmo-Trn2-DwoEr0-unsplash.jpg
