@@ -3,10 +3,6 @@ const today = new Date()
 ---
 
 <footer class="grid justify-items-center gap-4 py-4">
-  <div>
-    &copy; {today.getFullYear()}
-    <a href="mailto:me@drornir.dev">me@drornir.dev</a>
-  </div>
   <div class="flex gap-4">
     <a href="https://bsky.app/profile/drornir.dev" target="_blank">
       <span class="sr-only">My Bluesky</span>
@@ -25,5 +21,9 @@ const today = new Date()
         ></path></svg
       >
     </a>
+  </div>
+  <div>
+    &copy; {today.getFullYear()}
+    <a href="mailto:me@drornir.dev">me@drornir.dev</a>
   </div>
 </footer>

@@ -3,17 +3,19 @@ import HTML from "../layouts/HTML.astro"
 ---
 
 <HTML>
-  <main class="mx-auto max-w-3xl px-4 py-8">
+  <main class="mx-auto flex max-w-3xl flex-col px-4 py-8">
     <div class="my-astro-content">
-      <h1 class="my-8 rounded-md bg-card p-2 text-4xl">Hello, I'm Dror! 👋</h1>
+      <div class="flex items-center justify-between">
+        <h1 class="my-0 rounded-md bg-card text-4xl">Hello, I'm Dror! 👋</h1>
+        <img src="/me.jpg" class="my-0 ms-auto w-24 rounded-full" />
+      </div>
       <article class="">
-        <p>I'm a software developer doing mostly devops related work</p>
-        <p>Welcome to my website!</p>
+        <p class="mt-0">Welcome to my website!</p>
+        <p>I'm a software developer doing mostly devops related work.</p>
         <p>
           Checkout my Github: <a href="https://github.com/drornir">https://github.com/drornir</a>
-        </p>
-        <p>
-          And the posts I occasionally write <a href="/posts">here</a>
+
+          and the posts I occasionally write <a href="/posts">here</a>
         </p>
       </article>
     </div>
