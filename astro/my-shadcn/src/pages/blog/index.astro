@@ -1,13 +1,6 @@
 ---
-import { getCollection } from "astro:content"
 import RecentPosts from "@/components/RecentPosts.astro"
 import HTML from "@/layouts/HTML.astro"
-
-const posts = (await getCollection("blog")).sort((a, b) => {
-  const ad = a.data.updatedDate ?? a.data.date
-  const bd = b.data.updatedDate ?? b.data.date
-  return bd.valueOf() - ad.valueOf()
-})
 ---
 
 <HTML
