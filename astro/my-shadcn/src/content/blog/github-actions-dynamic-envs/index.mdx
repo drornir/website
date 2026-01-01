@@ -1,0 +1,233 @@
+---
+title: Github Actions Deployments with Dynamic Environments
+description: >-
+  Learn how to use Github Actions to deploy your application
+  to multiple environments using Terraform as the source of truth, creating
+  Github Environment Variables and discovering them dynamically in a dedicated
+  custom github action.
+date: 2026-01-01
+cover:
+  image: covers/TerraformToGithub.png
+  alt: Terraform to Github
+tags:
+  - Github
+  - Terraform
+  - Config
+  - CI/CD
+---
+
+I have a Terraform module that creates an application environment - a namespace in a k8s cluster.
+I'm using Github Actions (unfortunately) for the CI/CD to deploy the applications to different environments.
+
+In this post I want to share how I made my pipeline automatically deploy to all environments in parallel, even though the envs can be destroyed or created using terraform.
+
+The idea is the inside my terraform module that creates the environment, I also create an
+environment variable on github to store the environment configuration, and I query the github environment variables at the start of the deployment pipeline.
+
+# Setup
+
+In my actual setup, we have multiple dev/test environments in a test cluster, and a staging environment
+and a production environment sharing a production cluster. For each cluster we also have a blue/green
+deployment on the cluster level. Meaning I can recreate a mostly identical cluster, deploy all the apps,
+make sure the new cluster is operational and when I'm ready, route all the traffic to the new cluster.
+
+This requires us to keep the deployments to all environments in sync, especially in prod.
+
+So I created a simple way to automate keeping my CI config aligned to which clusters I have up at any time.
+
+# Terraform
+
+Inside of the module that creates the environment, I add a `github_actions_organization_variable` resource. In your case a "normal" `github_actions_environment_variable` might be more appropriate, but I think it's actually more beneficial to use an organization variable, as it can be shared across all repositories in the organization.
+
+```terraform
+
+locals {
+  globally_unique_env_id = "TERRAFORM_ENV_${var.cluster_name}_${var.env}_${kubernetes_namespace.app.metadata[0].name}"
+}
+
+resource "github_actions_organization_variable" "this" {
+  variable_name = local.globally_unique_env_id
+  visibility    = "private"
+
+  value = <<EOF
+  {
+    "namespace": "${kubernetes_namespace.app.metadata[0].name}",
+    "env": "${var.env}",
+    "cluster_name": "${var.cluster_name}",
+  }
+  EOF
+}
+```
+
+What happens here is that I push a json as a raw string as the value. The variable name needs to be globally unique, so I use a combination of the cluster name, environment name, and the namespace name.
+You may want to choose some different strategy, even a random string. The only important thing is to have a way to make sure they are unique, and start with the same string in all of them. I chose `TERRAFORM_ENV_` here.
+
+> Gotcha: Github will uppercase the variable*name, so know that if you set e.g `terraform_env*...`it will become`TERRAFORM*ENV*...`. This is important to keep in mind when referencing the variable later in github.
+
+Feel free to add any other data you need here. In my real setup I added the AWS account id and region
+to be used in `aws eks update-kubeconfig`, and other feature toggles I wanted.
+
+# Github Action to parse the data
+
+In my example I'm using `jq` to parse and manipulate the data, but you can use literally anything else
+you prefer. We're just parsing JSON data here.
+
+The first step is that we want to get all the variables that start with `TERRAFORM_ENV_`.
+The second step is to filter for only the relevant environments we want to deploy to and transform
+the data into something that we can iterate over.
+
+In my case I used the built-in `matrix.include` feature in github, so the format will adhere to that format.
+
+> `matrix.include` is a way to tell github to not do a cartesian product on the object we give it,
+> but instead it just accepts an array of objects and it iterates over them the normal way.
+
+## How it will be used
+
+```yaml
+on:
+  # ...
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix_include: ${{ steps.discover.outputs.matrix_include }}
+    steps:
+      - uses: actions/checkout
+      - name: Find app configs in github variables
+        id: discover
+        uses: .github/actions/discover-app-configs
+        with:
+          # You need to pass the JSON string of GitHub variables
+          github_vars: ${{ toJson(github.vars) }}
+          environment_filter: "${{ inputs.environment_filter }}"
+          cluster_name_filter: "${{ inputs.cluster_name_filter }}"
+          namespace_filter: "${{ inputs.namespace_filter }}"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [discover]
+    strategy:
+      fail-fast: false
+      # using the output here
+      matrix:
+        include: ${{ fromJson(needs.discover.outputs.matrix_include) }}
+    steps:
+      - uses: actions/checkout
+      - name: Deploy
+        uses: .github/actions/deploy # just an example
+        with:
+          # our discover action will output a list of json objects that
+          # have the keys 'cluster_name`, `namespace`
+          cluster_name: ${{ matrix.cluster_name }}
+          namespace: ${{ matrix.namespace }}
+```
+
+## The Action Code
+
+```yaml
+name: "Discover App Configs"
+inputs:
+  github_vars:
+    description: "JSON string of GitHub variables (pass vars context from workflow)"
+    required: true
+  environment_filter:
+    description: "Regex pattern to filter app configs by environment (empty means no filter)"
+    required: false
+    default: ""
+  cluster_name_filter:
+    description: "Regex pattern to filter app configs by cluster_name (empty means no filter)"
+    required: false
+    default: ""
+  namespace_filter:
+    description: "Regex pattern to filter app configs by namespace (empty means no filter)"
+    required: false
+    default: ""
+
+outputs:
+  matrix_include:
+    description: "JSON array of app configurations for the target environment"
+    value: ${{ steps.find-app-configs.outputs.matrix_include }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install jq
+      uses: dcarbone/install-jq-action@v3
+
+    - name: Find app configs in github variables
+      id: find-app-configs
+      shell: bash
+      run: |
+        set -euo pipefail
+        # first, we store the data to a file. Note I use `'EOF'` which is not just `EOF`
+        # 'EOF' makes the heredoc not evaluate expressions at all, which is important in case your JSON
+        # contains e.g dollar signs.
+
+        cat <<'EOF' > $RUNNER_TEMP/vars.json
+        ${{ inputs.github_vars }}
+        EOF
+
+        # example vars json:
+        # {
+        #  "TERRAFORM_ENV_xxx": {
+        #    "cluster_name": "prod-blue",
+        #    "env": "prod",
+        #    "namespace": "stage"
+        #  },
+        # }
+
+        # Filter the app configs using our prefix from before
+        # `to_entries` converts the JSON object into an array of key-value pairs
+        # `select` filters out all the elements that don't start with our prefix
+        # `| .value` extracts the value from the key-value pair
+        # since we stored JSONs as strings in github, we need to parse them back into JSON objects with `fromjson`
+        cat "$RUNNER_TEMP/vars.json" | \
+           jq '[ to_entries | .[] | select(.key | startswith("TERRAFORM_ENV_")) | .value | fromjson ]' \
+           > "$RUNNER_TEMP/just-envs.json"
+
+        # implement our business logic
+        # note the `test` on the empty regex always returns true so we don't need to check for empty regexes
+        cat "$RUNNER_TEMP/just-envs.json" | \
+           jq \
+            --arg env '${{ inputs.environment_filter }}' \
+            --arg cluster '${{ inputs.cluster_name_filter }}' \
+            --arg ns '${{ inputs.namespace_filter }}' \
+            '[ .[] | select(.env | test($env)) | select(.cluster_name | test($cluster)) | select(.namespace | test($ns)) ]' \
+           > "$RUNNER_TEMP/final-result.json"
+
+        # output to github
+        matrix_include=$(jq --compact-output '.' "$RUNNER_TEMP/final-result.json")
+        echo "matrix_include=$matrix_include" >> $GITHUB_OUTPUT
+```
+
+To make the JQ a bit more clear, what we do in JS would be
+
+```ts
+type Env = { env: string; namespace: string; cluster_name: string }
+
+function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFilter: RegExp, namespaceFilter: RegExp): Env[] {
+  const terraformCreatedVars: Env[] = []
+
+  // first jq call
+  for ([key, value] of Object.entries(vars)) {
+    if (key.startsWith("TERRAFORM_ENV_")) {
+      const parsedValue = JSON.parse(value) as Env
+      terraformCreatedVars.push(parsedValue)
+    }
+  }
+
+  // second jq call
+  const filteredEnvs = terraformCreatedVars
+    .filter((env: Env) => envFilter.test(env.environment))
+    .filter((env: Env) => clusterFilter.test(env.clusterName))
+    .filter((env: Env) => namespaceFilter.test(env.namespace))
+
+  // set github output
+  return JSON.stringify(filteredEnvs)
+}
+```
+
+# Let's Go!
+
+And that's it! You got yourself one less thing to worry about when spinning up new
+environments!
+
+Send me a DM on bluesky or Linkdin if you have any questions!

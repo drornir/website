@@ -2,7 +2,9 @@
 import { getPosts } from "@/lib/posts"
 import FormattedDate from "@/components/FormattedDate.astro"
 
-const posts = await getPosts()
+const { tag } = Astro.props
+
+const posts = await getPosts({ tag })
 ---
 
 <ul class="m-0 flex list-none flex-wrap justify-between gap-4 p-0">
@@ -10,7 +12,13 @@ const posts = await getPosts()
     posts.map((post) => (
       <li class="w-full rounded-md bg-card p-4 sm:w-[calc(50%-1rem)]">
         <a href={`/blog/${post.slug}/`}>
-          <img class="mb-2 rounded-lg border border-foreground bg-white" width={720} height={360} src={post.data.cover.image} alt="" />
+          <img
+            class="mb-2 rounded-lg border border-foreground bg-white"
+            width={720}
+            height={360}
+            src={((u) => `/${u.startsWith("/") ? u.slice(1) : u}`)(post.data.cover.image)}
+            alt=""
+          />
           <h4 class="">{post.data.title}</h4>
         </a>
         <p class="">
@@ -24,7 +32,9 @@ const posts = await getPosts()
         <p>
           <ul class="flex flex-row flex-wrap text-sm text-secondary underline">
             {post.data.tags.map((tag) => (
-              <li class="mx-1">#{tag}</li>
+              <li class="mx-1">
+                <a href={`/tags/${tag}/`}>#{tag}</a>
+              </li>
             ))}
           </ul>
         </p>
