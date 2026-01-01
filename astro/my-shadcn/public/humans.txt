@@ -4,7 +4,3 @@ This is my personal website, with my links and dev blog
 
 Feel free to scrape and cache, redistribute or whatever.
 If possible, link back to me so I can see who's reading my stuff.
-
-I'm available on Twitter, GitHub, and LinkedIn. Feel free to reach out!
-
-glhf!
