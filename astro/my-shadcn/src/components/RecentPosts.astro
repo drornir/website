@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content"
+import FormattedDate from "@/components/FormattedDate.astro"
+
+const posts = (await getCollection("blog")).sort((a, b) => {
+  const ad = a.data.updatedDate ?? a.data.date
+  const bd = b.data.updatedDate ?? b.data.date
+  return bd.valueOf() - ad.valueOf()
+})
+---
+
+<ul class="m-0 flex list-none flex-wrap justify-between gap-4 p-0">
+  {
+    posts.map((post) => (
+      <li class="w-full rounded-md bg-card p-4 sm:w-[calc(50%-1rem)]">
+        <a href={`/blog/${post.slug}/`}>
+          <img class="mb-2 rounded-lg border border-foreground bg-white" width={720} height={360} src={post.data.cover.image} alt="" />
+          <h4 class="">{post.data.title}</h4>
+        </a>
+        <p class="">
+          <FormattedDate date={post.data.date} />
+          {post.data.updatedDate && (
+            <i>
+              updated <FormattedDate date={post.data.updatedDate} />
+            </i>
+          )}
+        </p>
+        <p>
+          <ul class="flex flex-row flex-wrap text-sm text-secondary underline">
+            {post.data.tags.map((tag) => (
+              <li class="mx-1">#{tag}</li>
+            ))}
+          </ul>
+        </p>
+      </li>
+    ))
+  }
+</ul>

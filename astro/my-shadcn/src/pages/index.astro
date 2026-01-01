@@ -1,5 +1,6 @@
 ---
 import HTML from "../layouts/HTML.astro"
+import RecentPosts from "@/components/RecentPosts.astro"
 ---
 
 <HTML>
@@ -15,9 +16,12 @@ import HTML from "../layouts/HTML.astro"
         <p>
           Checkout my Github: <a href="https://github.com/drornir">https://github.com/drornir</a>
 
-          and the posts I occasionally write <a href="/posts">here</a>
+          and the posts I occasionally write.
         </p>
       </article>
     </div>
+    <section class="mt-6">
+      <RecentPosts />
+    </section>
   </main>
 </HTML>
