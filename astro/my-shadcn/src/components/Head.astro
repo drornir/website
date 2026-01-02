@@ -35,7 +35,7 @@ if (Astro.props.blog) {
   description = b.description + ".\n" + b.tags.map((t) => "#" + t).join(" ")
   cover = {
     ...b.cover,
-    image: new URL(b.cover.image, Astro.url),
+    image: new URL((b.cover.image.startsWith("/") && b.cover.image) || `/${cover.image}`, Astro.url),
   }
 
   article.author = "Dror Nir"
