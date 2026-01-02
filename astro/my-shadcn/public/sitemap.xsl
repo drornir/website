@@ -3,7 +3,7 @@
 
  <xsl:template match="/">
     <html>
-        <h2>Sitemap</h2>
+        <h2>drornir.dev Sitemap</h2>
           <ul>
             <xsl:for-each select="sm:urlset/sm:url">
                 <li>
