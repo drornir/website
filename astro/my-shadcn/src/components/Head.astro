@@ -19,10 +19,10 @@ const profilePicURL = new URL("/me.jpg", Astro.url)
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-let title = SITE_TITLE + (Astro.props.title ? " | " + Astro.props.title : "")
+let title = SITE_TITLE + (Astro.props.title ? ` | ${Astro.props.title}` : "")
 let description = Astro.props.description ?? SITE_DESCRIPTION
 let cover = Astro.props.cover ?? { image: profilePicURL, alt: "My Profile Picture" }
-let article: {
+const article: {
   publishDate?: Date
   updatedDate?: Date
   author?: string
@@ -31,11 +31,14 @@ let article: {
 if (Astro.props.blog) {
   const b = Astro.props.blog
 
-  title = SITE_TITLE + " | " + b.title
-  description = b.description + ".\n" + b.tags.map((t) => "#" + t).join(" ")
+  title = `${SITE_TITLE} | ${b.title}`
+  if (!description.endsWith(".")) {
+    description += "."
+  }
+  description = `${b.description}\n${b.tags.map((t) => `#${t}`).join(" ")}`
   cover = {
     ...b.cover,
-    image: new URL((b.cover.image.startsWith("/") && b.cover.image) || `/${cover.image}`, Astro.url),
+    image: new URL((b.cover.image.startsWith("/") && b.cover.image) || `/${b.cover.image}`, Astro.url),
   }
 
   article.author = "Dror Nir"
