@@ -203,11 +203,11 @@ To make the JQ a bit more clear, what we do in JS would be
 ```ts
 type Env = { env: string; namespace: string; cluster_name: string }
 
-function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFilter: RegExp, namespaceFilter: RegExp): Env[] {
+function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFilter: RegExp, namespaceFilter: RegExp): string {
   const terraformCreatedVars: Env[] = []
 
   // first jq call
-  for ([key, value] of Object.entries(vars)) {
+  for (const [key, value] of Object.entries(vars)) {
     if (key.startsWith("TERRAFORM_ENV_")) {
       const parsedValue = JSON.parse(value) as Env
       terraformCreatedVars.push(parsedValue)
@@ -216,8 +216,8 @@ function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFi
 
   // second jq call
   const filteredEnvs = terraformCreatedVars
-    .filter((env: Env) => envFilter.test(env.environment))
-    .filter((env: Env) => clusterFilter.test(env.clusterName))
+    .filter((env: Env) => envFilter.test(env.env))
+    .filter((env: Env) => clusterFilter.test(env.cluster_name))
     .filter((env: Env) => namespaceFilter.test(env.namespace))
 
   // set GitHub output
