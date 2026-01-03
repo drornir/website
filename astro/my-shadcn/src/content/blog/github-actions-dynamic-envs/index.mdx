@@ -1,28 +1,28 @@
 ---
-title: Github Actions Deployments with Dynamic Environments
+title: GitHub Actions Deployments with Dynamic Environments
 description: >-
-  Learn how to use Github Actions to deploy your application
+  Learn how to use GitHub Actions to deploy your application
   to multiple environments using Terraform as the source of truth, creating
-  Github Environment Variables and discovering them dynamically in a dedicated
-  custom github action.
+  GitHub Environment Variables and discovering them dynamically in a dedicated
+  custom GitHub Action.
 date: 2026-01-01
 cover:
   image: covers/TerraformToGithub.png
-  alt: Terraform to Github
+  alt: Terraform to GitHub
 tags:
-  - Github
+  - GitHub
   - Terraform
   - Config
   - CI/CD
 ---
 
 I have a Terraform module that creates an application environment - a namespace in a k8s cluster.
-I'm using Github Actions (unfortunately) for the CI/CD to deploy the applications to different environments.
+I'm using GitHub Actions (unfortunately) for the CI/CD to deploy the applications to different environments.
 
-In this post I want to share how I made my pipeline automatically deploy to all environments in parallel, even though the envs can be destroyed or created using terraform.
+In this post I want to share how I made my pipeline automatically deploy to all environments in parallel, even though the envs can be destroyed or created using Terraform.
 
-The idea is the inside my terraform module that creates the environment, I also create an
-environment variable on github to store the environment configuration, and I query the github environment variables at the start of the deployment pipeline.
+The idea is that inside my Terraform module that creates the environment, I also create an
+environment variable on GitHub to store the environment configuration, and I query the GitHub environment variables at the start of the deployment pipeline.
 
 # Setup
 
@@ -62,12 +62,12 @@ resource "github_actions_organization_variable" "this" {
 What happens here is that I push a json as a raw string as the value. The variable name needs to be globally unique, so I use a combination of the cluster name, environment name, and the namespace name.
 You may want to choose some different strategy, even a random string. The only important thing is to have a way to make sure they are unique, and start with the same string in all of them. I chose `TERRAFORM_ENV_` here.
 
-> Gotcha: Github will uppercase the variable*name, so know that if you set e.g `terraform_env*...`it will become`TERRAFORM*ENV*...`. This is important to keep in mind when referencing the variable later in github.
+> Gotcha: GitHub will uppercase the variable_name, so know that if you set e.g `terraform_env_...`it will become`TERRAFORM_ENV_...`. This is important to keep in mind when referencing the variable later in GitHub.
 
 Feel free to add any other data you need here. In my real setup I added the AWS account id and region
 to be used in `aws eks update-kubeconfig`, and other feature toggles I wanted.
 
-# Github Action to parse the data
+# GitHub Action to parse the data
 
 In my example I'm using `jq` to parse and manipulate the data, but you can use literally anything else
 you prefer. We're just parsing JSON data here.
@@ -76,9 +76,9 @@ The first step is that we want to get all the variables that start with `TERRAFO
 The second step is to filter for only the relevant environments we want to deploy to and transform
 the data into something that we can iterate over.
 
-In my case I used the built-in `matrix.include` feature in github, so the format will adhere to that format.
+In my case I used the built-in `matrix.include` feature in GitHub, so the format will adhere to that format.
 
-> `matrix.include` is a way to tell github to not do a cartesian product on the object we give it,
+> `matrix.include` is a way to tell GitHub to not do a cartesian product on the object we give it,
 > but instead it just accepts an array of objects and it iterates over them the normal way.
 
 ## How it will be used
@@ -93,7 +93,7 @@ jobs:
       matrix_include: ${{ steps.discover.outputs.matrix_include }}
     steps:
       - uses: actions/checkout
-      - name: Find app configs in github variables
+      - name: Find app configs in GitHub variables
         id: discover
         uses: .github/actions/discover-app-configs
         with:
@@ -152,7 +152,7 @@ runs:
     - name: Install jq
       uses: dcarbone/install-jq-action@v3
 
-    - name: Find app configs in github variables
+    - name: Find app configs in GitHub variables
       id: find-app-configs
       shell: bash
       run: |
@@ -178,7 +178,7 @@ runs:
         # `to_entries` converts the JSON object into an array of key-value pairs
         # `select` filters out all the elements that don't start with our prefix
         # `| .value` extracts the value from the key-value pair
-        # since we stored JSONs as strings in github, we need to parse them back into JSON objects with `fromjson`
+        # since we stored JSONs as strings in GitHub, we need to parse them back into JSON objects with `fromjson`
         cat "$RUNNER_TEMP/vars.json" | \
            jq '[ to_entries | .[] | select(.key | startswith("TERRAFORM_ENV_")) | .value | fromjson ]' \
            > "$RUNNER_TEMP/just-envs.json"
@@ -193,7 +193,7 @@ runs:
             '[ .[] | select(.env | test($env)) | select(.cluster_name | test($cluster)) | select(.namespace | test($ns)) ]' \
            > "$RUNNER_TEMP/final-result.json"
 
-        # output to github
+        # output to GitHub
         matrix_include=$(jq --compact-output '.' "$RUNNER_TEMP/final-result.json")
         echo "matrix_include=$matrix_include" >> $GITHUB_OUTPUT
 ```
@@ -220,7 +220,7 @@ function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFi
     .filter((env: Env) => clusterFilter.test(env.clusterName))
     .filter((env: Env) => namespaceFilter.test(env.namespace))
 
-  // set github output
+  // set GitHub output
   return JSON.stringify(filteredEnvs)
 }
 ```
@@ -230,4 +230,4 @@ function jqEquivalent(vars: Record<string, string>, envFilter: RegExp, clusterFi
 And that's it! You got yourself one less thing to worry about when spinning up new
 environments!
 
-Send me a DM on bluesky or Linkdin if you have any questions!
+Send me a DM on Bluesky or LinkedIn if you have any questions!
