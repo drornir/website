@@ -10,11 +10,6 @@
     "*.css": "tailwindcss"
   },
   "editor.detectIndentation": false,
-  "cSpell.enableFiletypes": [
-    "astro"
-  ],
-  "cSpell.words": [
-    "Astro",
-    "typeof"
-  ]
+  "cSpell.enableFiletypes": ["astro"],
+  "cSpell.words": ["Astro", "typeof"]
 }

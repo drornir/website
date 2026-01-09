@@ -31,6 +31,13 @@ const { title, description, date, updatedDate, cover, tags } = Astro.props
         <div class="">
           <h1 class="my-8 text-4xl">{title}</h1>
           <div class="">
+            {
+              description && (
+                <p>
+                  <blockquote>{description}</blockquote>
+                </p>
+              )
+            }
             <p>
               <FormattedDate date={date} />
             </p>
@@ -45,7 +52,13 @@ const { title, description, date, updatedDate, cover, tags } = Astro.props
             }
           </div>
           <ul class="not-prose flex flex-row flex-wrap text-sm text-secondary underline">
-            {tags.map((tag) => <li class="not-prose mx-1">#{tag}</li>)}
+            {
+              tags.map((tag) => (
+                <li class="not-prose mx-1">
+                  <a href={`/blog/tags/${tag}/`}>#{tag}</a>
+                </li>
+              ))
+            }
           </ul>
           <hr />
         </div>

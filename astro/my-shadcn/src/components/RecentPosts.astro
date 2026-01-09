@@ -1,6 +1,6 @@
 ---
-import { getPosts } from "@/lib/posts"
 import FormattedDate from "@/components/FormattedDate.astro"
+import { getPosts } from "@/lib/posts"
 
 const { tag } = Astro.props
 
@@ -33,7 +33,7 @@ const posts = await getPosts({ tag })
           <ul class="flex flex-row flex-wrap text-sm text-secondary underline">
             {post.data.tags.map((tag) => (
               <li class="mx-1">
-                <a href={`/tags/${tag}/`}>#{tag}</a>
+                <a href={`/blog/tags/${tag}/`}>#{tag}</a>
               </li>
             ))}
           </ul>
