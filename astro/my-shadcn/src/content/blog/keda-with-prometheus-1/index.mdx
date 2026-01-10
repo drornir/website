@@ -21,14 +21,14 @@ defacto standard when it comes to enhancing the built in HPA (Horizontal Pod Aut
 
 Unfortunately for me (and fortunately for you), I recently needed to autoscale
 services that were using some old and/or custom tech which didn't come with
-easy plug-n-play autoscaling infra.
+easy metrics collection that can drive my autoscaling needs.
 
 It wasn't trivial, but also not that complicated to implemented. So I want to
 tell you all how and why I did it and hopefully you'd find parts of it useful
 when you need to autoscale your own applications that run on Kubernetes.
 
-I want to briefly explain what I did in this blog post, and dive deeper into
-the different parts of the solution in follow up posts.
+In this blog post, I want to briefly explain what I did and I will dive deeper
+into the different parts of the solution in follow up posts.
 
 > Let me know on [Bluesky 🦋](https://bsky.app/profile/drornir.dev)
 > or [Email 📧](mailto:me@drornir.dev) or a
@@ -50,6 +50,10 @@ Namely,
 
 But maybe before I go into explaining each part, it might be beneficial to
 understand why simple CPU and Memory based autoscaling wasn't sufficient.
+
+{/*
 So I'll explain the context in which I was working with, but it might not be
-interesting to people who already know they need this custom stack. Feel free
-to skip ahead to the next header where I start explaining my solution.
+interesting to people who already know they need this custom stack.
+
+_**Feel free to skip ahead to the next header where I start explaining my solution.**_
+*/}
