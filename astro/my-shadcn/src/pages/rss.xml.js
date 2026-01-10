@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss"
 import { getPosts } from "@/lib/posts"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts"
 
 export async function GET(context) {
   const posts = await getPosts()

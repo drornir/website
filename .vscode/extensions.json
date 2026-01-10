@@ -1,4 +1,4 @@
 {
-  "recommendations": ["astro-build.astro-vscode","jetpack-io.devbox"],
+  "recommendations": ["astro-build.astro-vscode", "jetpack-io.devbox"],
   "unwantedRecommendations": []
 }

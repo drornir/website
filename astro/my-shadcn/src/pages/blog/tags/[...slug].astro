@@ -1,7 +1,7 @@
 ---
-import { getTags } from "@/lib/posts"
 import RecentPosts from "@/components/RecentPosts.astro"
 import HTML from "@/layouts/HTML.astro"
+import { getTags } from "@/lib/posts"
 
 export const prerender = true
 export async function getStaticPaths() {
@@ -24,6 +24,10 @@ const { tag } = Astro.props
 >
   <main class="mx-auto max-w-3xl px-4 py-8">
     <section>
+      <div class="my-astro-content mb-8">
+        <h1 class="my-0">Posts tagged with #{tag}</h1>
+        <p><blockqoute><a href="/blog/tags">Explore all Tags</a></blockqoute></p>
+      </div>
       <RecentPosts tag={tag} />
     </section>
   </main>

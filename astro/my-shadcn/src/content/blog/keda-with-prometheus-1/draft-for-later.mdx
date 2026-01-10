@@ -1,0 +1,43 @@
+---
+draft: true
+title: "KEDA with custom Prometheus metrics: "
+description: >-
+
+date: 2026-01-09
+cover:
+  image: /covers/KedaAndPrometheus.png
+  alt: Data Flowing from servers to Prometheus to KEDA and Back
+tags:
+  - KEDA
+  - Prometheus
+  - Kubernetes
+  - Metrics
+  - Obervability
+  - DevOps
+---
+
+## PHP FPM
+
+We're running a handful of services, some use part of an old monolith written in
+PHP, some are newer Typescript services powered by Remix, and some are written
+in Python for ML related work.
+
+The PHP services use [PHP-FPM](https://www.php.net/manual/en/install.fpm.php)
+(FastCGI Process Manager) to handle web requests. the TL;DR of what FPM does
+is to allow web requests to run concurrently on a machine. This kind of stuff is
+needed when you write a web server the uses blocking IO operations. In modern
+web stacks you usually dont need that, you usually have better concurrency
+and async IO primitives in the language runtime itself. But I digress.
+
+To simplify, FPM has a limited process pool, and when that pool is at capacity,
+it refuses additional connections. Our PHP services in production would sometimes
+hit that limit, meaning our customers would get 503 Bad Gateway randomly in peak
+hours. The solution was to spin up a lot of replicas all the time, which was
+wasteful most of the week. This is the common practice when you're working in startup
+mode - just spin up more replicas and worry about it later.
+
+Another problem/feature of FPM is that it doesn't run a web server by default.
+It exposes a unix socket, and we actually expose it to the internet using nginx
+which has a FastCGI (the F in FPM) adapter.
+
+##

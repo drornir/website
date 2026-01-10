@@ -1,0 +1,34 @@
+{
+  "lsp": {
+    "vscode-css-language-server": {
+      "settings": {
+        "css": {
+          "lint": {
+            "unknownAtRules": "ignore"
+          }
+        },
+        "scss": {
+          "lint": {
+            "unknownAtRules": "ignore"
+          }
+        },
+        "less": {
+          "lint": {
+            "unknownAtRules": "ignore"
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    "CSS": {
+      "format_on_save": "off",
+      "formatter": {
+        "external": {
+          "command": "npx",
+          "arguments": ["@biomejs/biome", "format", "--stdin-file-path", "{buffer_path}"]
+        }
+      }
+    }
+  }
+}

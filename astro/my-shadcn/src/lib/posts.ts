@@ -16,5 +16,7 @@ export async function getPosts({ tag }: { tag?: string } = {}) {
 export async function getTags() {
   const posts = await getPosts()
   const tags = posts.flatMap((post) => post.data.tags)
-  return [...new Set(tags)].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase(), "en", { sensitivity: "base" }))
+  return [...new Set(tags)].sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase(), "en", { sensitivity: "base" }),
+  )
 }

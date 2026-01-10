@@ -13,14 +13,14 @@
       "  - $4",
       "description: |",
       "  ${5: Description}",
-      "---",
+      "---"
     ],
-    "description": "Adds the frontmatter block for the AstroPaper Blog post",
+    "description": "Adds the frontmatter block for the AstroPaper Blog post"
   },
   "Blog Template": {
     "scope": "markdown",
     "prefix": "template",
     "body": ["${1:frontmatter}", "", "${2: hi}"],
-    "description": "Adds the template for the AstroPaper Blog post. You will need to trigger the snippet modal on the 'frontmatter' line to insert the other snipper.",
-  },
+    "description": "Adds the template for the AstroPaper Blog post. You will need to trigger the snippet modal on the 'frontmatter' line to insert the other snipper."
+  }
 }
