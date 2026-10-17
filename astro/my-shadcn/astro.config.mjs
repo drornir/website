@@ -1,9 +1,32 @@
 import cloudflare from "@astrojs/cloudflare"
+import { rehypeHeadingIds } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
 import { defineConfig, passthroughImageService } from "astro/config"
+
+function rehypeHeadingLinks() {
+  return (tree) => {
+    const visit = (node) => {
+      if (node.type === "element" && /^h[1-4]$/.test(node.tagName) && typeof node.properties?.id === "string") {
+        const hasLink = (child) =>
+          (child.type === "element" && child.tagName === "a") || child.children?.some(hasLink)
+
+        if (!node.children.some(hasLink)) {
+          node.children = [{
+            type: "element",
+            tagName: "a",
+            properties: { href: `#${node.properties.id}`, className: ["heading-link"] },
+            children: node.children,
+          }]
+        }
+      }
+      node.children?.forEach(visit)
+    }
+    visit(tree)
+  }
+}
 
 /***
  * @typedef {import("astro/config").AstroUserConfig} AstroUserConfig
@@ -29,6 +52,7 @@ const config = {
   ],
   markdown: {
     syntaxHighlight: "shiki",
+    rehypePlugins: [rehypeHeadingIds, rehypeHeadingLinks],
     shikiConfig: {
       theme: "catppuccin-mocha",
     },

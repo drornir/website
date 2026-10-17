@@ -1,11 +1,13 @@
 ---
+import type { MarkdownHeading } from "astro"
 import type { CollectionEntry } from "astro:content"
 import FormattedDate from "../components/FormattedDate.astro"
+import TableOfContents from "../components/TableOfContents.astro"
 import HTML from "./HTML.astro"
 
-type Props = CollectionEntry<"blog">["data"]
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] }
 
-const { title, description, date, updatedDate, cover, tags } = Astro.props
+const { title, description, date, updatedDate, cover, tags, headings } = Astro.props
 ---
 
 <HTML
@@ -63,6 +65,7 @@ const { title, description, date, updatedDate, cover, tags } = Astro.props
           <hr />
         </div>
 
+        <TableOfContents headings={headings} />
         <slot />
       </div>
     </article>

@@ -162,8 +162,27 @@
     @apply prose-a:text-foreground prose-blockquote:my-6 prose-blockquote:border-primary prose-strong:text-foreground;
     @apply prose-ul:my-3 prose-li:my-0 prose-li:marker:text-foreground;
     @apply prose-code:rounded-sm prose-code:bg-code prose-code:text-secondary;
-    @apply prose-headings:mb-6 prose-headings:mt-12 prose-headings:font-bold prose-headings:text-foreground;
+    @apply prose-headings:font-bold prose-headings:text-foreground;
     @apply prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg;
     @apply max-w-none rounded-lg bg-card p-6 leading-normal;
+  }
+
+  .my-astro-content :is(h1, h2, h3, h4) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .my-astro-content :is(h1, h2, h3, h4) + :is(h1, h2, h3, h4) {
+    margin-top: 1rem;
+  }
+
+  .my-astro-content .heading-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .my-astro-content .heading-link:is(:hover, :focus-visible) {
+    text-decoration: underline;
   }
 }
