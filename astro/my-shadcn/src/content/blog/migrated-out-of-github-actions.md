@@ -233,3 +233,7 @@ Really, it's been great out of the box. Highly recommend.
 ---
 
 *I used AI to help edit this article.*
+
+## Comments
+
+Discuss this post on [Bluesky](https://bsky.app/profile/did:plc:lk2y42l2lnl6ibupyezyy6l6/post/3my3u6usxjk2i).
