@@ -9,6 +9,8 @@ tags:
   - GitHub
   - CI/CD
   - Buildkite
+  - Code Generation
+  - Dev Tools
 ---
 
 *Cover illustration created by ChatGPT.*
