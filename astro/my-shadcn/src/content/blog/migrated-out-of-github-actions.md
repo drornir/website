@@ -13,14 +13,16 @@ tags:
   - Dev Tools
 ---
 
-*Cover illustration created by ChatGPT.*
+_Cover illustration created by ChatGPT._
 
 > The post is split into "Why" and "How". Each section stands on its own, so feel free to skip.
 
 I recently migrated our CI/CD in SignalPET from Github Actions to Buildkite. I never liked their style of creating and managing pipelines but for reasons out of my control I always ended up forced to work with it. Luckily for me Github managed to make the platform so unstable I could justify taking two weeks to migrate us off, and do it the way I always wanted to.
 
 Now, when I know my developers are very happy about it I feel I can confidently share my reasoning on why to do it, and share my now proven opinion on how to write CI/CD pipelines in practice.
+
 # Why
+
 ## GitHub Actions sucks
 
 ### Unstable
@@ -67,11 +69,12 @@ GitLab has, natively and conveniently, a feature that allows you to mark a step 
 
 They also allowed you to rerun a step multiple times. If another developer deployed their code to the same test environment, you could rerun your deploy after they finished and reset the environment to your version.
 
-It feels insane that I need to explain this as a feature, but GitHub doesn't have it in the way we needed. GitHub lets you rerun a specific job after the workflow finishes. But you can't rerun it while the workflow is still running, and with our manual approval gate, the workflow was never *not* running.
+It feels insane that I need to explain this as a feature, but GitHub doesn't have it in the way we needed. GitHub lets you rerun a specific job after the workflow finishes. But you can't rerun it while the workflow is still running, and with our manual approval gate, the workflow was never _not_ running.
 
 So to retry a failed or stuck deploy, you first had to cancel **the whole** workflow and rerun it from scratch. And if you just wanted to rerun a successful deploy without rebuilding the whole Docker image, that wasn't an option for us either.
 
 Even cancelling wasn't reliable: we hit a bug with workflows that ran multiple levels of nested workflows. I'd click "Cancel workflow," GitHub would accept the request, and the workflow would just keep running.
+
 ## So Now What?
 
 I can really go off on how GitHub Actions is a worse product and infrastructure than anything else, including building your own. The **only** thing it has is that it's integrated into GitHub. This product does not stand on its own. And since even the worst CI/CD product is capable of doing a reasonable job building and publishing an npm package, the fact that it's already there is enough for people to use it.
@@ -94,6 +97,7 @@ I (Claude) searched and researched the options, aggregated them in a wiki, and t
 4. It should be a CI/CD platform and not a generic pipeline platform. While every pipeline platform can be a CI/CD platform, I wanted a tool that optimizes for fast Docker builds, artifact caching, unit testing, and GitHub and Slack integrations. In the pay vs. build choice, I wanted to pay for features. In other words, I didn't want to use Argo Workflows.
 5. Uptime, SOC2 and compliance stuff.
 6. Something that is actively maintained.
+
 ## Buildkite
 
 I won't go into the whole research process; it's a bit tedious. The bottom line was that manual invocation and reruns are not as widespread as I thought, and Buildkite was the only viable option that actually supported them.
@@ -105,6 +109,7 @@ They even distribute an auto-generated SDK from an OpenAPI spec that gives me a 
 And I'll share something from the end of the migration: it turns out Buildkite is pretty fast! The pipelines that hurt the most finished 2x to 5x faster. I didn't change runner size or caching. I had a whole plan of sending Docker builds to depot.dev after I finished the initial migration, but it just feels unnecessary now.
 
 > Another nice thing with Buildkite is that there's an easy way to self-host the workers on AWS. If it matters to you, I assume you already understand why it's a good option to have.
+
 # How
 
 ## Escaping YAML
@@ -150,7 +155,44 @@ Once I had about 50% of the features in the IR, I wrote a function that transfor
 
 The resulting path is `Config` and `Service` → `WorkflowBuilder` → an IR DAG → Buildkite YAML.
 
-I then started building abstractions and helpers on top of that for concrete features I needed. For example, for Docker, I created a `DockerBuild` class that accepts what the Docker build command needs plus a working directory, and all it does is convert itself into a vertex in the IR. Then you can take that vertex and put it in your DAG.
+I then started building abstractions and helpers on top of that for concrete features I needed. For example, for Docker, I created a `DockerBuild` class that accepts what the Docker build command needs plus a working directory, and all it does is convert itself into a vertex in the IR. `DockerBuild` is essentially a pure function from high level inputs like `name`, `commit_sha`, `file`, `use_turbo_cache` etc. into a generic vertex whose command is a multiline Bash script.
+Then you can take that vertex and put it in your DAG like any other command vertex.
+
+Visually it looks something like this:
+
+```python
+d = DockerBuild(
+    name="my-service",
+    file="Dockerfile.prod",
+    working_directory="my-wd",
+    use_turbo_cache=True,
+    args={"MY_VAR" : "1"},
+    commit_sha=config.git.commit_sha,
+    branch=config.git.branch,
+    # ...
+)
+v = d.into_vertex()
+print(v.command())
+```
+
+This is roughly what will be printed:
+
+```bash
+turbo-cache-server start --port 1234
+(cd my-wd
+  NAME=registry.example.com/my-service
+  docker buildx build . --file Dockerfile.prod \
+    --tag $NAME:gitsha-3ef514 \
+    --tag $NAME:branch-feat-example \
+    --build-arg MY_VAR=1 \
+    --build-arg TURBO_PORT=1234 \
+    --cache-from $NAME:cache-branch-main \
+    --cache-from $NAME:cache-branch-feat-example \
+    --cache-to   $NAME:cache-branch-feat-example
+)
+```
+
+> I'm intentionally not accurate in how I actually implemented things. I'm skipping details and making things look simpler than the real implementation in order to highlight the core ideas.
 
 Then I took another step because I was starting to reach the public interface layer. `DockerBuild` needed to know things like the Docker tag to push to, but I didn't want to bother my users with it. The tag can (and should) be calculated from the current Git SHA, which is available to me through Buildkite.
 
@@ -232,7 +274,7 @@ Really, it's been great out of the box. Highly recommend.
 
 ---
 
-*I used AI to help edit this article.*
+_I used AI to help edit this article._
 
 # Comments
 
